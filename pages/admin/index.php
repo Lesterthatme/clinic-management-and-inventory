@@ -1,3 +1,5 @@
+<?php require '../../config/dbcon.php' ?>
+
 <!DOCTYPE html>
 <html lang="en">
 

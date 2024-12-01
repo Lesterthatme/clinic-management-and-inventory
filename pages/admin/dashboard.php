@@ -1,3 +1,5 @@
+<?php require '../../config/dbcon.php' ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,6 +14,8 @@
 </head>
 
 <body>
+
+    <?php include 'navbar.php'; ?>
     <div class="container mt-5">
         <h1 class="text-center">BASC Clinic Dashboard</h1>
         <div class="row my-4 text-center">
