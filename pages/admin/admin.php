@@ -1,7 +1,4 @@
-<?php
-// Include the database connection
-include('config/dbcon.php');
-?>
+<?php require '../../config/dbcon.php' ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,7 +50,7 @@ include('config/dbcon.php');
                         echo "<td>" . $row["MI"] . "</td>";
                         echo "<td>" . $row["position"] . "</td>";
                         echo "<td>" . $row["username"] . "</td>";
-                        echo "<td>********</td>";  // Never display the password directly
+                        echo "<td>********</td>";
                         echo "<td>
                             <button class='btn btn-warning btn-sm' data-bs-toggle='modal' data-bs-target='#editAdminModal' data-id='" . $row['adminID'] . "'>Edit</button>
                             <form action='functions/delete_admin.php' method='POST' style='display:inline-block;'>
