@@ -15,7 +15,6 @@
     <?php include 'navbar.php'; ?>
     <div class="container mt-5">
 
-        <!-- Inventory Table -->
         <div class="row">
             <div class="col-lg-8">
                 <table class="table table-bordered table-hover pt-2">
@@ -33,7 +32,6 @@
                     <tbody id="inventoryTable">
 
                         <?php
-                        // Search query
                         $search = isset($_GET['search']) ? $_GET['search'] : '';
                         $sql = "SELECT * FROM inventory";
 
@@ -66,7 +64,6 @@
                 </table>
             </div>
 
-            <!-- Generate Report Form -->
             <div class="col-lg-4">
                 <h3>Generate Report</h3>
                 <form id="generateReportForm" action="backend.php" method="POST">
@@ -92,19 +89,15 @@
         </div>
     </div>
 
-    <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Bootstrap Bundle JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- DataTable JS -->
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function() {
-            // Initialize DataTable on the inventory table
             $('.table').DataTable({
-                searching: true, // Enable search
-                paging: true, // Enable pagination
-                info: true // Show table info
+                searching: true,
+                paging: true,
+                info: true
             });
         });
     </script>

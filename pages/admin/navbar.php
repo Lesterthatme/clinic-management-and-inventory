@@ -4,20 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
 
-    <link rel="stylesheet" href="../../assets/style/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar {
+            background-color: #97ce89;
+            border-radius: 15px;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            color: #315b30;
+        }
+
+        .navbar-brand:hover {
+            color: #1a3a2a;
+        }
+
+        .navbar-nav .nav-link {
+            color: #315b30;
+            font-weight: 500;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #1a3a2a;
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light" style="background: linear-gradient(to right, #d9fdd3, #a6f0bc);">
+    <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <!-- <img src="../images/logo.jpg" alt="Clinic Logo" width="40" height="40" class="me-2"> -->
-                <span>BASC CLINIC</span>
-            </a>
+            <a class="navbar-brand" href="#">BASC CLINIC</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -42,6 +63,7 @@
             </div>
         </div>
     </nav>
+
 </body>
 
 </html>

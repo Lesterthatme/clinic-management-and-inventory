@@ -14,28 +14,63 @@
     <style>
         body {
             font-size: 1.125rem;
-            /* Slightly larger font for better readability */
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .container-custom h3 {
+            color: #315b30;
         }
 
         .container-custom {
             max-width: 1400px;
-            /* Wider container */
             padding: 0 15px;
         }
 
-        .card h5,
-        .card h2 {
-            font-size: 1.25rem;
-            /* Scaled font size for better zoom compatibility */
+        .card {
+            border: none;
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        @media (max-width: 768px) {
+        .card h5 {
+            font-size: 1.25rem;
+        }
 
-            .card h5,
-            .card h2 {
-                font-size: 1rem;
-                /* Adjust for smaller screens */
-            }
+        .card h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        table {
+            background-color: white;
+        }
+
+        table thead {
+            background-color: #97ce89;
+            color: white;
+        }
+
+        table tbody tr {
+            background-color: #e8f5e9;
+        }
+
+        table tbody td {
+            text-align: center;
+        }
+
+        table tbody tr:hover {
+            background-color: #c8e6c9;
+        }
+
+        .table-bordered {
+            border: 2px solid #4caf50;
+        }
+
+        .text-center h3 {
+            color: #2e7d32;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -43,28 +78,30 @@
 <body>
 
     <?php include 'navbar.php'; ?>
+
     <div class="container-custom mt-5">
+        <h3>Overview</h3>
         <div class="row my-4 text-center">
             <div class="col-md-3">
-                <div class="card bg-light p-3">
+                <div class="card p-3">
                     <h5>Total Patients</h5>
                     <h2>154</h2>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card bg-light p-3">
+                <div class="card p-3">
                     <h5>Students</h5>
                     <h2>54</h2>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card bg-light p-3">
+                <div class="card p-3">
                     <h5>Staff and Faculty</h5>
                     <h2>23</h2>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="card bg-light p-3">
+                <div class="card p-3">
                     <h5>Dispense</h5>
                     <h2>27</h2>
                 </div>
@@ -85,26 +122,26 @@
                 <tr>
                     <td>Neozep</td>
                     <td>23</td>
-                    <td>23</td>
-                    <td>23</td>
+                    <td>23 day/s</td>
+                    <td>2024-12-12</td>
                 </tr>
                 <tr>
                     <td>Bioflu</td>
                     <td>5</td>
-                    <td>23</td>
-                    <td>23</td>
+                    <td>23 day/s</td>
+                    <td>2024-12-12</td>
                 </tr>
                 <tr>
                     <td>Mefinamic</td>
                     <td>10</td>
-                    <td>23</td>
-                    <td>23</td>
+                    <td>23 day/s</td>
+                    <td>2024-12-12</td>
                 </tr>
                 <tr>
                     <td>Paracetamol</td>
                     <td>23</td>
-                    <td>23</td>
-                    <td>23</td>
+                    <td>23 day/s</td>
+                    <td>2024-12-12</td>
                 </tr>
             </tbody>
         </table>
@@ -119,7 +156,6 @@
     <script>
         $(document).ready(function() {
             $('#productExpirationTable').DataTable();
-            $('#dispenseTable').DataTable();
         });
     </script>
 </body>

@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BASC Clinic - Patients Overview</title>
-    <!-- Bootstrap CSS -->
     <link
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         rel="stylesheet" />
@@ -53,7 +52,6 @@
 <body>
     <?php include 'navbar.php' ?>
 
-    <!-- Main Content -->
     <div class="container table-container">
         <h2 class="text-center mb-4">Patients Overview</h2>
         <div class="input-group mb-3">
@@ -62,7 +60,7 @@
                 <button class="btn btn-outline-secondary" type="button">Search</button>
             </div>
         </div>
-        <table id="table table-hover" class="table table-striped table-bordered">
+        <table id="recordTable" class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th>#</th>
@@ -86,7 +84,7 @@
                         <button class="btn btn-danger">Delete</button>
                     </td>
                 </tr>
-                <!-- Additional rows -->
+
                 <tr>
                     <td>2</td>
                     <td>Tolentino</td>
@@ -103,13 +101,13 @@
         </table>
     </div>
 
-    <!-- Bootstrap JS -->
-    <script
-        src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script
-        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
-    <script
-        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#recordTable').DataTable();
+        });
+    </script>
 </body>
 
 </html>

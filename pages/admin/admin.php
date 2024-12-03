@@ -7,25 +7,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Management</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="../../assets/style/style.css">
+
+    <style>
+        table {
+            background-color: white;
+        }
+
+        table thead {
+            text-align: center;
+            background-color: #97ce89;
+            color: white;
+        }
+
+        table tbody tr:hover {
+            background-color: #c8e6c9;
+        }
+
+        table tbody td {
+            text-align: center;
+        }
+
+        .table-bordered {
+            border: 2px solid #4caf50;
+        }
+
+        .container h1 {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
 
     <?php include 'navbar.php' ?>;
 
-    <!-- Admin Table -->
     <div class="container mt-5">
         <h1 class="text-center">Admin Management</h1>
         <div class="text-end mb-3">
             <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addAdminModal">Add Admin</button>
         </div>
-        <!-- Admin Table -->
-        <table id="adminTable" class="table table-striped mt-3">
+
+        <table id="adminTable" class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -39,7 +64,6 @@
             </thead>
             <tbody>
                 <?php
-                // Fetch admin data from the database
                 $sql = "SELECT * FROM admins";
                 $result = $conn->query($sql);
 
@@ -69,7 +93,6 @@
         </table>
     </div>
 
-    <!-- Add Admin Modal -->
     <div class="modal fade" id="addAdminModal" tabindex="-1" aria-labelledby="addAdminModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -117,9 +140,7 @@
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- DataTable JS -->
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function() {
