@@ -10,117 +10,173 @@
         rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
         crossorigin="anonymous">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
-        }
 
-        .navbar {
-            background: linear-gradient(to right, #d4f1d4, #e8f5e8);
-        }
+    <!-- css -->
+    <link rel="stylesheet" href="./assets/style/indexUser.css">
 
-        .navbar-brand {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #2d6a2d;
-        }
+    <!-- script -->
 
-        .navbar-nav .nav-link {
-            color: #2d6a2d;
-        }
-
-        .hero-section {
-            text-align: center;
-            padding: 50px 20px;
-        }
-
-        .hero-title {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #2d6a2d;
-            margin-bottom: 20px;
-        }
-
-        .hero-description {
-            font-size: 1rem;
-            color: #555;
-            margin-bottom: 30px;
-        }
-
-        .hero-image {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .pagination-circle {
-            width: 10px;
-            height: 10px;
-            background-color: #a3d3a3;
-            border-radius: 50%;
-            margin: 5px;
-            display: inline-block;
-        }
-    </style>
 </head>
 
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg">
-        <div class="container">
+        <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="https://via.placeholder.com/30" alt="Logo" style="width: 30px; height: 30px; margin-right: 10px;">
+                <img src="./assets/img/basc.png " alt="Logo" style=" height: 65px; margin-right: 10px;">
                 BASC Clinic
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="./index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Schedule</a>
+                        <a class="nav-link" href="./pages/user/schedule.php">Schedule</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Register</a>
+                        <a class="nav-link" href="./pages/user/logIn.php">Log-in</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+    <div class="container-fluid carousel px-0">
+        <button class="carousel-button prev">&#10232;</button>
+        <button class="carousel-button next">&#10233;</button>
+        <!-- <div>
+            <span>&#8212;</span>
+            <span>&#8212;</span>
+            <span>&#8212;</span>
+        </div> -->
+        <ul>
+            <li class="slide">
+                <div class="row first-pagination">
+                    <div class="col-md-6 context1 ">
+                        <p>HEALTH CARE</p>
+                        <p>At BASC Clinic, your health and well-being are at the heart of what we do. Our goal is to provide compassionate care and personalized health solutions to meet your needs. From preventive services to advanced treatments, we’re here to support you every step of the way.
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <!-- Text Content -->
-                <div class="col-md-6">
-                    <h1 class="hero-title">HEALTH CARE</h1>
-                    <p class="hero-description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus iaculis justo vel felis suscipit, nec fermentum ipsum scelerisque. In hac habitasse platea dictumst.
-                    </p>
+                        </p>
+                        <p>
+                            Welcome to a place where care meets excellence.
+                        </p>
+                    </div>
+                    <div class="col-md-6 context2">
+                        <div class="background-object">
+                            <img src="./assets/img/obj1.svg" alt="Shape">
+                            <div class="absolute-picture">
+                                <img src="./assets/img/clinic.png" alt="Clinic Picture">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <!-- Image -->
-                <div class="col-md-6 text-center">
-                    <img src="https://via.placeholder.com/400x300" alt="Health Care" class="hero-image">
+            </li>
+            <li class="slide">
+                <div class="row row-cols-1 second-pagination">
+                    <div class="second-content">
+                        <div class="col context1">
+                            <p>TEAM</p>
+                            <p>Clinic Staff</p>
+                        </div>
+                        <div class="col context2">
+                            <div class="frame1">
+                                <div class="background-frame">
+                                    <div class="frame-absolute-image">
+                                        <img src="./assets/img/doctor.png" alt="College Doctor">
+                                    </div>
+                                </div>
+                                <div class="frame-information">
+                                    <p><strong>Dr. Lourdes Fernandez</strong></p>
+                                    <p>College Physician</p>
+                                </div>
+                            </div>
+                            <div class="frame2">
+                                <div class="background-frame">
+                                    <div class="frame-absolute-image">
+                                        <img src="./assets/img/nurseMae.png" alt="College Nurse"
+                                            height="100px">
+                                    </div>
+                                </div>
+                                <div class="frame-information">
+                                    <p><strong>Nurse Mae F. Miranda</strong></p>
+                                    <p>College Nurse</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <!-- Pagination -->
-            <div class="d-flex justify-content-center mt-4">
-                <span class="pagination-circle"></span>
-                <span class="pagination-circle"></span>
-                <span class="pagination-circle"></span>
-            </div>
+            </li>
+            <li class="slide">
+                <div class="row third-pagination">
+                    <div class="col-md-6 context1">
+                        <img src="./assets/img/obj2.svg"
+                            alt="object2">
+                        <div class="image-float">
+                            <img src="./assets/img/nurse.png"
+                                alt="nurse Picture">
+                        </div>
+                    </div>
+                    <div class="col-md-6 context2">
+                        <div class="content3">
+                            <div class="title">JOIN US NOW</div>
+                            <div class="description">
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis magni quaerat aliquid ipsam consequatur repellat labore nihil atque nemo, ducimus ipsa, in laboriosam, molestias non quibusdam aperiam eligendi placeat! Velit magnam asperiores ea repellat aut veritatis adipisci aperiam, est necessitatibus. Molestiae similique minima nesciunt odit dignissimos eaque vel eveniet cumque! Id possimus consequuntur ducimus fugiat blanditiis repellat fugit saepe culpa.
+                            </div>
+                            <div class="cta">
+                                <button class="register-btn">
+                                    <a href="./pages/user/register.php">Register Now</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="container-fluid">
+        <div>
+            
         </div>
-    </section>
-
+    </div>
     <!-- Bootstrap JavaScript -->
     <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous">
+    </script>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const prevButton = document.querySelector('.carousel-button.prev');
+        const nextButton = document.querySelector('.carousel-button.next');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.removeAttribute('data-active');
+                if (i === index) {
+                    slide.setAttribute('data-active', 'true');
+                }
+            });
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentSlide = (currentSlide === 0) ? slides.length - 1 : currentSlide - 1;
+            showSlide(currentSlide);
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentSlide = (currentSlide === slides.length - 1) ? 0 : currentSlide + 1;
+            showSlide(currentSlide);
+        });
+
+        showSlide(currentSlide);
     </script>
 </body>
 
