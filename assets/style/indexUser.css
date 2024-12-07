@@ -16,37 +16,10 @@
 
 body {
   margin: 0;
-
+  overflow-x: hidden;
   /* background-color: #f7f7f7; */
 }
 
-.navbar {
-  background: linear-gradient(to right, #e8f5e8, #d4f1d4);
-  position: relative;
-  z-index: 1000;
-}
-
-.navbar-brand {
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
-  font-weight: bold;
-  color: #2d6a2d;
-}
-
-.navbar-nav {
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  width: 100%;
-
-  gap: 3rem;
-  padding-right: 10rem;
-}
-
-.navbar-nav .nav-link {
-  color: #2d6a2d;
-  font-size: clamp(1.3rem, 1.8vw, 1.5rem);
-  font-weight: 450;
-}
 
 /* content */
 .carousel {

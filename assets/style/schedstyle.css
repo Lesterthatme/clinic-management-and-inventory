@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rosario:ital,wght@0,300..700;1,300..700&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: "Poppins";
+}
+
+:root {
+  --color1: #2f5f26;
+  --color2: #315b30;
+  --color3: #97ce89;
+  --color4: #171186;
+}
+
+
+body {
+  margin: 0;
+  background-image: url("../img/schedBGC.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}
+.sched-body {
+  background-image: url("../img/schedBGC.svg");
+  background-repeat: no-repeat;
+  background-size: cover; /* Ensures the image covers the container */
+  background-position: center center; /* Centers the background image */
+  background-attachment: fixed; /* Makes the image fixed in the viewport */
+  height: 100%; /* Ensure it adapts to content height */
+  width: 100%;
+  position: relative; /* Keeps it in flow */
+}
+
+.content-body {
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.content-body .row > div:nth-child(1) {
+  padding-left: 3rem;
+}
+.content-body .row > div:nth-child(1) > p:nth-child(1) {
+  color: var(--color1);
+  font-size: clamp(1.5rem, 4vw, 2.7rem);
+  font-weight: 300;
+  padding-top: 2rem;
+}
+.content-body .row > div:nth-child(1) > p:nth-child(2) {
+  color: var(--color2);
+  font-size: clamp(0.5rem, 2vw, 1.3rem);
+  font-weight: 300;
+
+  text-align: justify;
+  text-indent: 1em;
+
+  padding: 1rem 0rem 1rem 0rem;
+}
+.content-body .row > div:nth-child(1) > p:nth-child(3) {
+  color: var(--color2);
+  font-size: clamp(0.5rem, 2vw, 1.3rem);
+  font-weight: 300;
+
+  text-align: justify;
+  text-indent: 1em;
+}
+
+.content-body .row > div:nth-child(2) {
+  height: 86vh;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content-body .row > div:nth-child(2) .box-container {
+  height: 80vh;
+  width: 80%;
+  border-radius: 79px 79px 79px 79px;
+  -webkit-border-radius: 79px 79px 79px 79px;
+  -moz-border-radius: 79px 79px 79px 79px;
+  border: 6px solid #97ce89;
+  padding: 1rem 2rem;
+}
+.content-body .row > div:nth-child(2) .box-container hr {
+  border: 0; 
+  height: 3px; 
+  background-color: rgb(0, 0, 0); 
+  color: black;
+  margin: 2rem 0;
+}
+.content-body .row > div:nth-child(2) .box-container .doctor-label{
+  text-align: end;
+  padding: 0.4rem 3rem 0 0;
+}
+.content-body .row > div:nth-child(2) .box-container .doctor-label > span{
+  background-color: red;
+  padding: 5px 10px;
+
+  border-radius: 11px;
+  color: white;
+  font-weight: 700;
+}
+.content-body .row > div:nth-child(2) .box-container > p:nth-child(1) {
+  text-align: center;
+  color: var(--color1);
+
+  font-size: clamp(1rem, 3vw, 3.5rem);
+  font-weight: 500;
+}
+.content-body .row > div:nth-child(2) .box-container .weekdays {
+  display: flex;
+  justify-content: space-between;
+  font-size: clamp(1rem, 2vw, 1.8rem);
+  font-weight: 500;
+}

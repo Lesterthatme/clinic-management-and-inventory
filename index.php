@@ -12,13 +12,14 @@
         crossorigin="anonymous">
 
     <!-- css -->
+    <link rel="stylesheet" href="./assets/style/headerstyle.css">
     <link rel="stylesheet" href="./assets/style/indexUser.css">
-
     <!-- script -->
 
 </head>
 
 <body>
+
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
@@ -126,7 +127,7 @@
                         <div class="content3">
                             <div class="title">JOIN US NOW</div>
                             <div class="description">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis magni quaerat aliquid ipsam consequatur repellat labore nihil atque nemo, ducimus ipsa, in laboriosam, molestias non quibusdam aperiam eligendi placeat! Velit magnam asperiores ea repellat aut veritatis adipisci aperiam, est necessitatibus. Molestiae similique minima nesciunt odit dignissimos eaque vel eveniet cumque! Id possimus consequuntur ducimus fugiat blanditiis repellat fugit saepe culpa.
+                                Join us at BASC Clinic, where we prioritize your health and well-being. Our dedicated team offers a range of services, from preventive care to specialized treatments, ensuring that your healthcare needs are met with the utmost professionalism and compassion. Whether you're seeking routine check-ups or more personalized care, BASC Clinic is here to support you every step of the way. Let us be your partner in health.
                             </div>
                             <div class="cta">
                                 <button class="register-btn">
@@ -141,7 +142,7 @@
     </div>
     <div class="container-fluid">
         <div>
-            
+
         </div>
     </div>
     <!-- Bootstrap JavaScript -->
