@@ -1,12 +1,12 @@
 <?php
+define("hostname","localhost");
+define("username","root");
+define("password", "");
+define("db_name", "clinic");
 
-$db_server = "127.0.0.1:3307";
-$db_username = "root@";
-$db_password = "";
-$db_database = "clinic";
+$conn = mysqli_connect(hostname, username, password, db_name);
 
-$conn = mysqli_connect($db_server, $db_username, $db_password, $db_database);
-$conn = mysqli_connect("127.0.0.1:3307", "root@", "", "clinic");
-if ($conn->connect_error) {
-    die("connection failed" . $conn->connect_error);
+if(!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
+?>

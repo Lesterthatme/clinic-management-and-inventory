@@ -8,16 +8,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $MI = $_POST['MI'];
     $position = $_POST['position'];
     $username = $_POST['username'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash the password
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
     // SQL query to insert data
     $sql = "INSERT INTO admins (name, surname, MI, position, username, password) 
             VALUES ('$name', '$surname', '$MI', '$position', '$username', '$password')";
 
-    // Execute the query
     if ($conn->query($sql) === TRUE) {
         echo "New admin added successfully";
-        header("Location: ../admin.php"); // Redirect back to the admin page after inserting
+        header("Location: ../admin.php"); 
         exit();
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
