@@ -14,105 +14,7 @@
 
     <!-- css -->
     <link rel="stylesheet" href="../../assets/style/headerstyle.css">
-
-    <style>
-        @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rosario:ital,wght@0,300..700;1,300..700&display=swap");
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            font-family: "Poppins";
-        }
-
-        :root {
-            --color1: #2f5f26;
-            --color2: #315b30;
-            --color3: #97ce89;
-            --color4: #171186;
-        }
-
-        body {
-            margin: 0;
-            background-image: url("../../assets/img/schedBGC.svg");
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center center;
-            background-size: cover;
-            height: 90vh;
-        }
-
-        .sched-body .content-body>.row:nth-child(1) {
-            text-align: center;
-        }
-
-        .sched-body .content-body>.row:nth-child(1)>.col:nth-child(1)>p:nth-child(1) {
-            font-size: clamp(1rem, 4vw, 4rem);
-            color: var(--color1);
-            font-weight: 600;
-            padding-top: 1rem;
-        }
-
-        .sched-body .content-body>.row:nth-child(1)>.col:nth-child(1)>p:nth-child(2) {
-            color: var(--color2);
-            font-size: 1.3em;
-        }
-
-        .sched-body .content-body>.row:nth-child(1)>.col:nth-child(2) {
-            display: flex;
-            justify-content: center;
-
-        }
-
-        .sched-body .content-body>.row:nth-child(1)>.col:nth-child(2)>.row:nth-child(1)>div {
-            width: 9vw;
-            display: flex;
-            justify-content: center;
-
-        }
-
-        .sched-body .content-body>.row:nth-child(1)>.col:nth-child(2)>.row:nth-child(1)>div button {
-            background-color: var(--color3);
-            /* Light green background */
-            color: var(--color1);
-            /* Dark green text */
-            font-size: 1.2rem;
-            /* Adjust font size */
-            font-weight: 600;
-            /* Make text bold */
-            border: 2px solid var(--color1);
-            /* Dark green border */
-            border-radius: 30px;
-            /* Makes button edges rounded */
-            padding: 10px 20px;
-            /* Space inside the button */
-            cursor: pointer;
-            /* Pointer on hover */
-            transition: all 0.3s ease;
-            width: 8vw;
-            /* Smooth transition for hover effect */
-        }
-
-        .sched-body .content-body>.row:nth-child(1)>.col:nth-child(2)>.row:nth-child(1)>div button:hover {
-            background-color: var(--color1);
-            /* Dark green background */
-            color: white;
-            /* White text */
-            border-color: var(--color2);
-            /* Slightly lighter border on hover */
-        }
-
-        .sched-body .content-body>.row:nth-child(1)>.col:nth-child(2)>.row:nth-child(1)>div button:focus {
-            outline: none;
-            /* Removes default focus outline */
-            box-shadow: 0 0 10px var(--color4);
-            /* Adds glow effect */
-        }
-
-        .hidden {
-            display: none;
-        }
-    </style>
+    <link rel="stylesheet" href="../../assets/style/registerStyle.css">
 </head>
 
 <body>
@@ -166,7 +68,7 @@
                 </div>
             </div>
             <div class="container p-4 hidden" id="studentForm">
-                <form>
+                <form method="POST" action="../../functions/register.php">
                     <div class="row">
                         <div class="col-md-8">
                             <fieldset class="border p-3 rounded border-success">
@@ -174,34 +76,35 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <label for="studID" class="form-label">Student ID No.</label>
-                                            <input type="text" class="form-control" id="studID">
+                                            <label for="studNum" class="form-label">Student ID No.</label>
+                                            <input type="text" class="form-control" id="studNum" name="studNum">
                                         </div>
                                         <div class="mb-3">
                                             <label for="fName" class="form-label">First Name</label>
-                                            <input type="text" class="form-control" id="fName">
+                                            <input type="text" class="form-control" name="fName" id="fName">
                                         </div>
+
                                         <div class="mb-3">
                                             <label for="mName" class="form-label">Middle Initial</label>
-                                            <input type="text" class="form-control" id="mName">
+                                            <input type="text" class="form-control" name="mName" id="mName">
                                         </div>
                                         <div class="mb-3">
                                             <label for="lName" class="form-label">Last Name</label>
-                                            <input type="text" class="form-control" id="lName">
+                                            <input type="text" class="form-control" name="lName" id="lName">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="eMail" class="form-label">Email</label>
-                                            <input type="email" class="form-control" id="eMail">
+                                            <input type="email" class="form-control" id="eMail" name="eMail">
                                         </div>
                                         <div class="mb-3">
                                             <label for="bDay" class="form-label">Birthday</label>
-                                            <input type="date" class="form-control" id="bDay">
+                                            <input type="date" class="form-control" id="bDay" name="bDay">
                                         </div>
                                         <div class="mb-3">
                                             <label for="insti" class="form-label">Institute</label>
-                                            <select id="insti" class="form-select">
+                                            <select id="insti" class="form-select" name="insti">
                                                 <option value="" disabled selected>Choose One</option>
                                                 <option value="agriculture">College of Agriculture</option>
                                                 <option value="management">Institute of Management</option>
@@ -212,38 +115,40 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="subJect" class="form-label">Subject Enrolled</label>
-                                            <select id="subJect" class="form-select">
+                                            <select id="subJect" class="form-select" name="subJect">
                                                 <option value="" disabled selected>Choose a Subject</option>
                                             </select>
                                         </div>
                                     </div>
+
                                 </div>
                             </fieldset>
                         </div>
                         <div class="col-md-4">
+
                             <fieldset class="border p-3 rounded border-success">
                                 <legend class="float-none w-auto px-2">Address</legend>
                                 <div class="mb-3">
                                     <label for="barangay" class="form-label">Barangay</label>
-                                    <input type="text" class="form-control" id="barangay">
+                                    <input type="text" class="form-control" name="barangay" id="barangay">
                                 </div>
                                 <div class="mb-3">
                                     <label for="town" class="form-label">Town</label>
-                                    <input type="text" class="form-control" id="town">
+                                    <input type="text" class="form-control" name="town" id="town">
                                 </div>
                                 <div class="mb-3">
                                     <label for="city" class="form-label">City</label>
-                                    <input type="text" class="form-control" id="city">
+                                    <input type="text" class="form-control" name="city" id="city">
                                 </div>
                                 <div class="mb-3">
                                     <label for="province" class="form-label">Province</label>
-                                    <input type="text" class="form-control" id="province">
+                                    <input type="text" class="form-control" name="province" id="province">
                                 </div>
                             </fieldset>
                         </div>
                     </div>
                     <div class="text-center mt-4">
-                        <button type="submit" class="btn btn-success px-4 py-2">Submit</button>
+                        <button type="submit" class="btn btn-success px-4 py-2" name="stud-submit">Submit</button>
                     </div>
                 </form>
             </div>
@@ -425,6 +330,7 @@
                     option.textContent = subject; // Set the display text
                     subjectDropdown.appendChild(option);
                 });
+                console.log("Subjects populated:", subjects[selectedInstitute]); // Debugging line
             }
         });
 

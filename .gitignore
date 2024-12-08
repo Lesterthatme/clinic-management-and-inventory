@@ -1,0 +1,4 @@
+PHPMailer
+vendor
+composer.json
+composer.lock
