@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rosario:ital,wght@0,300..700;1,300..700&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: "Poppins";
+}
+
+:root {
+  --color1: #2f5f26;
+  --color2: #315b30;
+  --color3: #97ce89;
+  --color4: #171186;
+}
+
+body {
+  margin: 0;
+  background-image: url("../../assets/img/schedBGC.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-size: cover;
+  height: 90vh;
+}
+
+.sched-body .content-body > .row:nth-child(1) {
+  text-align: center;
+}
+
+.sched-body
+  .content-body
+  > .row:nth-child(1)
+  > .col:nth-child(1)
+  > p:nth-child(1) {
+  font-size: clamp(1rem, 4vw, 4rem);
+  color: var(--color1);
+  font-weight: 600;
+  padding-top: 1rem;
+}
+
+.sched-body
+  .content-body
+  > .row:nth-child(1)
+  > .col:nth-child(1)
+  > p:nth-child(2) {
+  color: var(--color2);
+  font-size: 1.3em;
+}
+
+.sched-body .content-body > .row:nth-child(1) > .col:nth-child(2) {
+  display: flex;
+  justify-content: center;
+}
+
+.sched-body
+  .content-body
+  > .row:nth-child(1)
+  > .col:nth-child(2)
+  > .row:nth-child(1)
+  > div {
+  width: 9vw;
+  display: flex;
+  justify-content: center;
+}
+
+.sched-body
+  .content-body
+  > .row:nth-child(1)
+  > .col:nth-child(2)
+  > .row:nth-child(1)
+  > div
+  button {
+  background-color: var(--color3);
+  /* Light green background */
+  color: var(--color1);
+  /* Dark green text */
+  font-size: 1.2rem;
+  /* Adjust font size */
+  font-weight: 600;
+  /* Make text bold */
+  border: 2px solid var(--color1);
+  /* Dark green border */
+  border-radius: 30px;
+  /* Makes button edges rounded */
+  padding: 10px 20px;
+  /* Space inside the button */
+  cursor: pointer;
+  /* Pointer on hover */
+  transition: all 0.3s ease;
+  width: 8vw;
+  /* Smooth transition for hover effect */
+}
+
+.sched-body
+  .content-body
+  > .row:nth-child(1)
+  > .col:nth-child(2)
+  > .row:nth-child(1)
+  > div
+  button:hover {
+  background-color: var(--color1);
+  /* Dark green background */
+  color: white;
+  /* White text */
+  border-color: var(--color2);
+  /* Slightly lighter border on hover */
+}
+
+.sched-body
+  .content-body
+  > .row:nth-child(1)
+  > .col:nth-child(2)
+  > .row:nth-child(1)
+  > div
+  button:focus {
+  outline: none;
+  /* Removes default focus outline */
+  box-shadow: 0 0 10px var(--color4);
+  /* Adds glow effect */
+}
+
+.hidden {
+  display: none;
+}
