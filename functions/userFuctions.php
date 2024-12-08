@@ -311,5 +311,109 @@ if (isset($_POST['register_user'])) {
         header("Location: ../pages/user/logIn.php");
         exit();
     }
-} 
+} else if (isset($_POST['add-admin-btn'])) {
+    $userData = [
+        'userFName' => mysqli_real_escape_string($conn, $_POST['userFName']),
+        'userMName' => mysqli_real_escape_string($conn, $_POST['userMName']),
+        'userLName' => mysqli_real_escape_string($conn, $_POST['userLName']),
+        'userType' => mysqli_real_escape_string($conn, $_POST['userType']),
+        'userEmail' => mysqli_real_escape_string($conn, $_POST['userEmail']),
+        'userBirthday' => mysqli_real_escape_string($conn, $_POST['userBirthday']),
+        'userBarangay' => mysqli_real_escape_string($conn, $_POST['userBarangay']),
+        'userTown' => mysqli_real_escape_string($conn, $_POST['userTown']),
+        'userCity' => mysqli_real_escape_string($conn, $_POST['userCity']),
+        'userProvince' => mysqli_real_escape_string($conn, $_POST['userProvince']),
+        'userPassword' => mysqli_real_escape_string($conn, $_POST['userPassword']),
+    ];
 
+    function registerUser($query, $userData, $conn)
+    {
+        $conn->begin_transaction();
+
+        $password = $userData['userPassword'];
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        try {
+            if ($conn === false) {
+                die("Database connection failed: " . mysqli_connect_error());
+            }
+
+            $stmt = $conn->prepare($query);
+            if ($stmt === false) {
+                die('MySQL prepare error: ' . $conn->error);
+            }
+
+            if ($userData['userType'] == '4') {
+                $accTypeID = "4";
+                $Postion = "doctor";
+                $stmt->bind_param(
+                    "ssssssssssss",
+                    $userData['userFName'],
+                    $userData['userMName'],
+                    $userData['userLName'],
+                    $accTypeID,
+                    $userData['userEmail'],
+                    $hashed_password,
+                    $userData['userBirthday'],
+                    $Postion,
+                    $userData['userBarangay'],
+                    $userData['userTown'],
+                    $userData['userCity'],
+                    $userData['userProvince']
+                );
+            } elseif ($userData['userType'] == '5') {
+                $accTypeID = "5";
+                $Postion = "nurse";
+                $stmt->bind_param(
+                    "ssssssssssss",
+                    $userData['userFName'],
+                    $userData['userMName'],
+                    $userData['userLName'],
+                    $accTypeID,
+                    $userData['userEmail'],
+                    $hashed_password,
+                    $userData['userBirthday'],
+                    $Postion,
+                    $userData['userBarangay'],
+                    $userData['userTown'],
+                    $userData['userCity'],
+                    $userData['userProvince']
+                );
+            }
+
+            if ($stmt->execute()) {
+                $conn->commit();
+                echo "<script>alert('Successfully added')
+                    window.location.href = '../pages/admin/admin.php'
+            </script>";
+            } else {
+                echo "<script>alert('Error.')
+                    window.location.href = '../pages/admin/admin.php'
+            </script>";
+            }
+        } catch (Exception $e) {
+            $conn->rollback();
+            echo "<script>alert('Transaction failed.')
+                        window.location.href = '../pages/admin/admin.php'
+                </script>";
+        } finally {
+            $conn->close();
+        }
+    }
+
+
+
+    if ($userData['userType'] == '4') {
+        $query = "INSERT INTO users (userFName, userMName, userLName, userType, userEmail, userPassword, userBirthday, userWorkPosition, userBarangay, userTown, userCity, userProvince)
+                      VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        registerUser($query, $userData, $conn);
+    } elseif ($userData['userType'] == '5') {
+        $query = "INSERT INTO users (userFName, userMName, userLName, userType, userEmail, userPassword, userBirthday, userWorkPosition, userBarangay, userTown, userCity, userProvince)
+                      VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        registerUser($query, $userData, $conn);
+    } else {
+        echo "<script>alert('Invalid user type.')
+                        window.location.href = '../pages/admin/admin.php'
+                </script>";
+    }
+}
