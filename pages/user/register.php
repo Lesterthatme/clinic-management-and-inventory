@@ -302,69 +302,69 @@
     </script>
 
     <script>
-        const subjects = {
-            agriculture: ["Crop Science", "Animal Science", "Agricultural Engineering"],
-            management: ["Business Administrator", "Hotel Managemenet", "Agricultural Business"],
-            arts_and_science: ["Development Communication"],
-            education: ["Elementary", "English Major", "Science Major"],
-            engineering: ["Information Technology", "Geodetic Engineering", "Agriculture and Biosystem Engineering"],
-        };
+    const subjects = {
+        agriculture: ["Crop Science", "Animal Science", "Agricultural Engineering"],
+        management: ["Business Administrator", "Hotel Managemenet", "Agricultural Business"],
+        arts_and_science: ["Development Communication"],
+        education: ["Elementary", "English Major", "Science Major"],
+        engineering: ["Information Technology", "Geodetic Engineering", "Agriculture and Biosystem Engineering"],
+    };
 
-        const instiDropdown = document.getElementById("userInstitute");
-        const subjectDropdown = document.getElementById("userSubject");
+    const instiDropdown = document.getElementById("userInstitute");
+    const subjectDropdown = document.getElementById("userSubject");
 
-        // Add an event listener to detect changes in the institute dropdown
-        instiDropdown.addEventListener("change", function() {
-            // Get the selected institute
-            const selectedInstitute = instiDropdown.value;
+    // Add an event listener to detect changes in the institute dropdown
+    instiDropdown.addEventListener("change", function() {
+        // Get the selected institute
+        const selectedInstitute = instiDropdown.value;
 
-            // Clear the current options in the subject dropdown
-            subjectDropdown.innerHTML = '<option value="" selected disabled>Choose a Subject</option>';
+        // Clear the current options in the subject dropdown
+        subjectDropdown.innerHTML = '<option value="" selected disabled>Choose a Subject</option>';
 
-            // If an institute is selected, populate the subject dropdown
-            if (subjects[selectedInstitute]) {
-                subjects[selectedInstitute].forEach(subject => {
-                    const option = document.createElement("option");
-                    option.value = subject.toLowerCase().replace(/\s+/g, "_"); // Format the value
-                    option.textContent = subject; // Set the display text
-                    subjectDropdown.appendChild(option);
-                });
-                console.log("Subjects populated:", subjects[selectedInstitute]); // Debugging line
-            }
+        // If an institute is selected, populate the subject dropdown
+        if (subjects[selectedInstitute]) {
+            subjects[selectedInstitute].forEach(subject => {
+                const option = document.createElement("option");
+                option.value = subject.toLowerCase().replace(/\s+/g, "_"); // Format the value
+                option.textContent = subject; // Set the display text
+                subjectDropdown.appendChild(option);
+            });
+            console.log("Subjects populated:", subjects[selectedInstitute]); // Debugging line
+        }
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const studentButton = document.getElementById("Btn1"); // Students button
+        const facultyButton = document.getElementById("Btn2"); // Faculty button
+        const staffButton = document.getElementById("Btn3"); // Staff button
+
+        const studentForm = document.getElementById("studentForm");
+        const facultyForm = document.getElementById("facultyForm");
+        const staffForm = document.getElementById("staffForm");
+
+        // Helper function to hide all forms
+        function hideAllForms() {
+            studentForm.classList.add("hidden");
+            facultyForm.classList.add("hidden");
+            staffForm.classList.add("hidden");
+        }
+
+        // Event listeners for buttons
+        studentButton.addEventListener("click", function() {
+            hideAllForms();
+            studentForm.classList.remove("hidden");
         });
 
-        document.addEventListener("DOMContentLoaded", function() {
-            const studentButton = document.getElementById("Btn1"); // Students button
-            const facultyButton = document.getElementById("Btn2"); // Faculty button
-            const staffButton = document.getElementById("Btn3"); // Staff button
-
-            const studentForm = document.getElementById("studentForm");
-            const facultyForm = document.getElementById("facultyForm");
-            const staffForm = document.getElementById("staffForm");
-
-            // Helper function to hide all forms
-            function hideAllForms() {
-                studentForm.classList.add("hidden");
-                facultyForm.classList.add("hidden");
-                staffForm.classList.add("hidden");
-            }
-
-            // Event listeners for buttons
-            studentButton.addEventListener("click", function() {
-                hideAllForms();
-                studentForm.classList.remove("hidden");
-            });
-
-            facultyButton.addEventListener("click", function() {
-                hideAllForms();
-                facultyForm.classList.remove("hidden");
-            });
-
-            staffButton.addEventListener("click", function() {
-                hideAllForms();
-                staffForm.classList.remove("hidden");
-            });
+        facultyButton.addEventListener("click", function() {
+            hideAllForms();
+            facultyForm.classList.remove("hidden");
         });
+
+        staffButton.addEventListener("click", function() {
+            hideAllForms();
+            staffForm.classList.remove("hidden");
+        });
+    });
     </script>
 </body>
 
