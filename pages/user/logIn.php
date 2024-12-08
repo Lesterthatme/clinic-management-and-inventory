@@ -69,7 +69,7 @@
                     <form>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email Address || Account Number</label>
-                            <input type="email" id="email" class="form-control" placeholder="Enter your email or Account Number" required>
+                            <input type="text" id="email" class="form-control" placeholder="Enter your email or Account Number" required>
                         </div>
                         <div class="mb-3 position-relative">
                             <label for="password" class="form-label">Password</label>

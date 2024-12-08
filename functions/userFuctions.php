@@ -274,9 +274,6 @@ if (isset($_POST['register_user'])) {
 
     if (mysqli_num_rows($result) == 1) {
         $stored_password = $row['userPassword'];
-        echo $stored_password;
-        echo "              ";
-        echo $userPassword;
 
         if (password_verify($userPassword, $stored_password)) {
             $_SESSION['userEmail'] = $userEmail;
@@ -303,8 +300,8 @@ if (isset($_POST['register_user'])) {
             }
         } else {
             $_SESSION['error'] = "Incorrect password, dine pumapasok si ate ko.";
-            header("Location: ../pages/user/logIn.php");
-            exit();
+            // header("Location: ../pages/user/logIn.php");
+            // exit();
         }
     } else {
         $_SESSION['error'] = "Incorrect Email or Account Number";
