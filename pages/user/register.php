@@ -64,7 +64,8 @@
                 </div>
             </div>
             <div class="container p-4 hidden" id="studentForm">
-                <form method="POST" action="../../functions/register.php">
+                <form method="POST" action="./../../functions/userFuctions.php">
+                    <input type="hidden" name="userType" value="student">
                     <div class="row">
                         <div class="col-md-8">
                             <fieldset class="border p-3 rounded border-success">
@@ -72,35 +73,37 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <label for="studNum" class="form-label">Student ID No.</label>
-                                            <input type="text" class="form-control" id="studNum" name="studNum">
+                                            <label for="userStudentID" class="form-label">Student ID No.</label>
+                                            <input type="text" class="form-control" id="userStudentID"
+                                                name="userStudentID">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="fName" class="form-label">First Name</label>
-                                            <input type="text" class="form-control" name="fName" id="fName">
+                                            <label for="userFName" class="form-label">First Name</label>
+                                            <input type="text" class="form-control" id="userFName" name="userFName">
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="mName" class="form-label">Middle Initial</label>
-                                            <input type="text" class="form-control" name="mName" id="mName">
+                                            <label for="userMName" class="form-label">Middle Initial</label>
+                                            <input type="text" class="form-control" id="userMName" name="userMName">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="lName" class="form-label">Last Name</label>
-                                            <input type="text" class="form-control" name="lName" id="lName">
+                                            <label for="userLName" class="form-label">Last Name</label>
+                                            <input type="text" class="form-control" id="userLName" name="userLName">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <label for="eMail" class="form-label">Email</label>
-                                            <input type="email" class="form-control" id="eMail" name="eMail">
+                                            <label for="userEmail" class="form-label">Email</label>
+                                            <input type="email" class="form-control" id="userEmail" name="userEmail">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="bDay" class="form-label">Birthday</label>
-                                            <input type="date" class="form-control" id="bDay" name="bDay">
+                                            <label for="userBirthday" class="form-label">Birthday</label>
+                                            <input type="date" class="form-control" id="userBirthday"
+                                                name="userBirthday">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="insti" class="form-label">Institute</label>
-                                            <select id="insti" class="form-select" name="insti">
+                                            <label for="userInstitute" class="form-label">Institute</label>
+                                            <select id="userInstitute" class="form-select" name="userInstitute">
                                                 <option value="" disabled selected>Choose One</option>
                                                 <option value="agriculture">College of Agriculture</option>
                                                 <option value="management">Institute of Management</option>
@@ -110,8 +113,8 @@
                                             </select>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="subJect" class="form-label">Subject Enrolled</label>
-                                            <select id="subJect" class="form-select" name="subJect">
+                                            <label for="userSubject" class="form-label">Subject Enrolled</label>
+                                            <select id="userSubject" class="form-select" name="userSubject">
                                                 <option value="" disabled selected>Choose a Subject</option>
                                             </select>
                                         </div>
@@ -125,26 +128,26 @@
                             <fieldset class="border p-3 rounded border-success">
                                 <legend class="float-none w-auto px-2">Address</legend>
                                 <div class="mb-3">
-                                    <label for="barangay" class="form-label">Barangay</label>
-                                    <input type="text" class="form-control" name="barangay" id="barangay">
+                                    <label for="userBarangay" class="form-label">Barangay</label>
+                                    <input type="text" class="form-control" name="userBarangay" id="userBarangay">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="town" class="form-label">Town</label>
-                                    <input type="text" class="form-control" name="town" id="town">
+                                    <label for="userTown" class="form-label">Town</label>
+                                    <input type="text" class="form-control" name="userTown" id="userTown">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="city" class="form-label">City</label>
-                                    <input type="text" class="form-control" name="city" id="city">
+                                    <label for="userCity" class="form-label">City</label>
+                                    <input type="text" class="form-control" name="userCity" id="userCity">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="province" class="form-label">Province</label>
-                                    <input type="text" class="form-control" name="province" id="province">
+                                    <label for="userProvince" class="form-label">Province</label>
+                                    <input type="text" class="form-control" name="userProvince" id="userProvince">
                                 </div>
                             </fieldset>
                         </div>
                     </div>
                     <div class="text-center mt-4">
-                        <button type="submit" class="btn btn-success px-4 py-2" name="stud-submit">Submit</button>
+                        <button type="submit" class="btn btn-success px-4 py-2" name="register_user">Submit</button>
                     </div>
                 </form>
             </div>
@@ -184,11 +187,11 @@
                                             <label for="userInstitute" class="form-label">Institute</label>
                                             <select id="userInstitute" class="form-select" name="userInstitute">
                                                 <option value="" disabled selected>Choose One</option>
-                                                <option value="agriculture">College of Agriculture</option>
-                                                <option value="management">Institute of Management</option>
-                                                <option value="arts_and_science">Institute of Arts and Science</option>
-                                                <option value="education">College of Education</option>
-                                                <option value="engineering">Institute of Engineering</option>
+                                                <option value="CA">College of Agriculture</option>
+                                                <option value="IM">Institute of Management</option>
+                                                <option value="IAS">Institute of Arts and Science</option>
+                                                <option value="COED">College of Education</option>
+                                                <option value="IEAT">Institute of Engineering</option>
                                             </select>
                                         </div>
                                     </div>
@@ -298,7 +301,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
 
-<script>
+    <script>
         const subjects = {
             agriculture: ["Crop Science", "Animal Science", "Agricultural Engineering"],
             management: ["Business Administrator", "Hotel Managemenet", "Agricultural Business"],
@@ -307,8 +310,8 @@
             engineering: ["Information Technology", "Geodetic Engineering", "Agriculture and Biosystem Engineering"],
         };
 
-        const instiDropdown = document.getElementById("insti");
-        const subjectDropdown = document.getElementById("subJect");
+        const instiDropdown = document.getElementById("userInstitute");
+        const subjectDropdown = document.getElementById("userSubject");
 
         // Add an event listener to detect changes in the institute dropdown
         instiDropdown.addEventListener("change", function() {

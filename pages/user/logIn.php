@@ -64,15 +64,15 @@ session_start();
                     <h2>Log into Clinicare</h2>
                     <p>Enter your login details below.</p>
                     <?php if (isset($_SESSION['error'])): ?>
-                    <div style="color: red; font-weight: bold;">
-                        <?php echo $_SESSION['error']; ?>
-                    </div>
-                    <?php unset($_SESSION['error']); ?>
+                        <div style="color: red; font-weight: bold;">
+                            <?php echo $_SESSION['error']; ?>
+                        </div>
+                        <?php unset($_SESSION['error']); ?>
                     <?php endif; ?>
                     <form action="./../../functions/userFuctions.php" method="POST">
                         <div class="mb-3">
                             <label for="userEmail" class="form-label">Email Address || Account Number</label>
-                            <input type="email" id="userEmail" name="userEmail" class="form-control"
+                            <input type="text" id="userEmail" name="userEmail" class="form-control"
                                 placeholder="Enter your email or Account Number" required>
                         </div>
                         <div class="mb-3 position-relative">
@@ -98,19 +98,19 @@ session_start();
     </div>
 
     <script>
-    // JavaScript to toggle password visibility
-    const togglePassword = document.getElementById("togglePassword");
-    const passwordInput = document.getElementById("userPassword");
+        // JavaScript to toggle password visibility
+        const togglePassword = document.getElementById("togglePassword");
+        const passwordInput = document.getElementById("userPassword");
 
-    togglePassword.addEventListener("click", function() {
-        // Toggle the type attribute
-        const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
-        passwordInput.setAttribute("type", type);
+        togglePassword.addEventListener("click", function() {
+            // Toggle the type attribute
+            const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+            passwordInput.setAttribute("type", type);
 
-        // Toggle the icon
-        this.classList.toggle("fa-eye");
-        this.classList.toggle("fa-eye-slash");
-    });
+            // Toggle the icon
+            this.classList.toggle("fa-eye");
+            this.classList.toggle("fa-eye-slash");
+        });
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
