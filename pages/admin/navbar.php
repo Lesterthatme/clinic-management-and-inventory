@@ -51,6 +51,9 @@
                         <a class="nav-link" href="inventory.php">Inventory</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="add-record.php">Add Record</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="records.php">Patients Record</a>
                     </li>
                     <li class="nav-item">
