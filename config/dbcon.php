@@ -1,7 +1,7 @@
 <?php
 
-$db_server = "127.0.0.1:3307";
-$db_username = "root@";
+$db_server = "localhost";
+$db_username = "root";
 $db_password = "";
 $db_database = "clinic";
 
