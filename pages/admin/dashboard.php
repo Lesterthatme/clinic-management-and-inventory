@@ -112,10 +112,10 @@
         <table id="productExpirationTable" class="table table-striped table-bordered">
             <thead>
                 <tr>
-                    <th>Product Name</th>
-                    <th>Pieces</th>
-                    <th>Days Before Expiration</th>
-                    <th>Expiration Date</th>
+                    <th style="text-align: center;">Product Name</th>
+                    <th style="text-align: center;">Pieces</th>
+                    <th style="text-align: center;">Days Before Expiration</th>
+                    <th style="text-align: center;">Expiration Date</th>
                 </tr>
             </thead>
             <tbody>
