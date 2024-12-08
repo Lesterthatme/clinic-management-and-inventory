@@ -303,12 +303,13 @@ if (isset($_POST['register_user'])) {
             }
         } else {
             $_SESSION['error'] = "Incorrect password, dine pumapasok si ate ko.";
-            // header("Location: ../pages/user/logIn.php");
-            // exit();
+            header("Location: ../pages/user/logIn.php");
+            exit();
         }
     } else {
         $_SESSION['error'] = "Incorrect Email or Account Number";
         header("Location: ../pages/user/logIn.php");
         exit();
     }
-}
+} 
+

@@ -41,9 +41,7 @@
 </head>
 
 <body>
-
     <?php include 'navbar.php' ?>;
-
     <div class="container mt-5">
         <h1 class="text-center">Admin Management</h1>
         <div class="text-end mb-3">
@@ -57,24 +55,21 @@
                     <th>Surname</th>
                     <th>Middle Initial</th>
                     <th>Position</th>
-                    <th>Username</th>
                     <th>Password</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                $sql = "SELECT * FROM admins";
+                $sql = "SELECT * FROM users WHERE userType IN (4,5) ";
                 $result = $conn->query($sql);
-
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<td>" . $row["name"] . "</td>";
-                        echo "<td>" . $row["surname"] . "</td>";
-                        echo "<td>" . $row["MI"] . "</td>";
-                        echo "<td>" . $row["position"] . "</td>";
-                        echo "<td>" . $row["username"] . "</td>";
+                        echo "<td>" . $row["userLName"] . "</td>";
+                        echo "<td>" . $row["userFName"] . "</td>";
+                        echo "<td>" . $row["userMName"] . "</td>";
+                        echo "<td>" . $row["userWorkPosition"] . "</td>";
                         echo "<td>********</td>";
                         echo "<td>
                             <button class='btn btn-warning btn-sm' data-bs-toggle='modal' data-bs-target='#editAdminModal' data-id='" . $row['adminID'] . "'>Edit</button>
@@ -96,44 +91,64 @@
     <div class="modal fade" id="addAdminModal" tabindex="-1" aria-labelledby="addAdminModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form method="POST" action="functions/add_admin.php">
+                <form method="POST" action="../../functions/userFuctions.php">
                     <div class="modal-header">
                         <h5 class="modal-title" id="addAdminModalLabel">Add Admin</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="addName" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="addName" name="name" required>
+                            <label for="userFName" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="userFName" name="userFName" required>
                         </div>
                         <div class="mb-3">
-                            <label for="addSurname" class="form-label">Surname</label>
-                            <input type="text" class="form-control" id="addSurname" name="surname" required>
+                            <label for="userMName" class="form-label">Middle Initial</label>
+                            <input type="text" class="form-control" id="userMName" name="userMName" required>
                         </div>
                         <div class="mb-3">
-                            <label for="addMiddleInitial" class="form-label">Middle Initial</label>
-                            <input type="text" class="form-control" id="addMiddleInitial" name="MI">
+                            <label for="userLName" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="userLName" name="userLName">
                         </div>
                         <div class="mb-3">
-                            <label for="addPosition" class="form-label">Position</label>
-                            <select class="form-select" id="addPosition" name="position" required>
-                                <option value="Doctor">Doctor</option>
-                                <option value="Nurse">Nurse</option>
-                                <option value="Admin">Admin</option>
+                            <label for="userType" class="form-label">Position</label>
+                            <select class="form-select" id="userType" name="userType" required>
+                                <option value="" selected disabled>Select a position</option>
+                                <option value="4">Doctor</option>
+                                <option value="5">Nurse</option>
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="addUsername" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="addUsername" name="username" required>
+                            <label for="userEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="userEmail" name="userEmail" required>
                         </div>
                         <div class="mb-3">
-                            <label for="addPassword" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="addPassword" name="password" required>
+                            <label for="userBirthday" class="form-label">Birthday</label>
+                            <input type="date" class="form-control" id="userBirthday" name="userBirthday" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="userBarangay" class="form-label">Barangay</label>
+                            <input type="text" class="form-control" id="userBarangay" name="userBarangay" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="userTown" class="form-label">Town</label>
+                            <input type="text" class="form-control" id="userTown" name="userTown" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="userCity" class="form-label">City</label>
+                            <input type="text" class="form-control" id="userCity" name="userCity" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="userProvince" class="form-label">Province</label>
+                            <input type="text" class="form-control" id="userProvince" name="userProvince" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="userPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="userPassword" name="userPassword" required>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Add Admin</button>
+                        <button type="submit" class="btn btn-primary" name="add-admin-btn">Add Admin</button>
                     </div>
                 </form>
             </div>
