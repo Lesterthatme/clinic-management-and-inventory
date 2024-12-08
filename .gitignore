@@ -2,3 +2,5 @@ PHPMailer
 vendor
 composer.json
 composer.lock
+
+/config/dbcon.php
