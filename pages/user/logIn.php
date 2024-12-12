@@ -1,14 +1,13 @@
 <?php
 session_start();
-
-if($_SESSION['userEmail']) {
-    if($_SESSION['accTypeID'] == "1") {
+if (isset($_SESSION['userEmail'])) {
+    if ($_SESSION['accTypeID'] == "1") {
         header("Location: /pages/admin/view-records.php");
-    } else if($_SESSION['accTypeID'] == "2") {
+    } else if ($_SESSION['accTypeID'] == "2") {
         header("Location: /pages/user/userDashboard.php");
-    } else if($_SESSION['accTypeID'] == "3") {
+    } else if ($_SESSION['accTypeID'] == "3") {
         header("Location: /pages/user/userDashboard.php");
-    }else if ($_SESSION['accTypeID'] == "4") {
+    } else if ($_SESSION['accTypeID'] == "4") {
         header("Location: /pages/admin/dashboard.php");
     } else if ($_SESSION['accTypeID'] == "5") {
         header("Location: /pages/admin/dashboard.php");
@@ -79,10 +78,10 @@ if($_SESSION['userEmail']) {
                     <h2>Log into Clinicare</h2>
                     <p>Enter your login details below.</p>
                     <?php if (isset($_SESSION['error'])): ?>
-                    <div style="color: red; font-weight: bold;">
-                        <?php echo $_SESSION['error']; ?>
-                    </div>
-                    <?php unset($_SESSION['error']); ?>
+                        <div style="color: red; font-weight: bold;">
+                            <?php echo $_SESSION['error']; ?>
+                        </div>
+                        <?php unset($_SESSION['error']); ?>
                     <?php endif; ?>
                     <form action="./../../functions/userFuctions.php" method="POST">
                         <div class="mb-3">
@@ -113,19 +112,19 @@ if($_SESSION['userEmail']) {
     </div>
 
     <script>
-    // JavaScript to toggle password visibility
-    const togglePassword = document.getElementById("togglePassword");
-    const passwordInput = document.getElementById("userPassword");
+        // JavaScript to toggle password visibility
+        const togglePassword = document.getElementById("togglePassword");
+        const passwordInput = document.getElementById("userPassword");
 
-    togglePassword.addEventListener("click", function() {
-        // Toggle the type attribute
-        const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
-        passwordInput.setAttribute("type", type);
+        togglePassword.addEventListener("click", function() {
+            // Toggle the type attribute
+            const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+            passwordInput.setAttribute("type", type);
 
-        // Toggle the icon
-        this.classList.toggle("fa-eye");
-        this.classList.toggle("fa-eye-slash");
-    });
+            // Toggle the icon
+            this.classList.toggle("fa-eye");
+            this.classList.toggle("fa-eye-slash");
+        });
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

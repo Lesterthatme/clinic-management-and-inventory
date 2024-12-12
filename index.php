@@ -150,31 +150,31 @@
     </script>
 
     <script>
-    const slides = document.querySelectorAll('.slide');
-    const prevButton = document.querySelector('.carousel-button.prev');
-    const nextButton = document.querySelector('.carousel-button.next');
-    let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const prevButton = document.querySelector('.carousel-button.prev');
+        const nextButton = document.querySelector('.carousel-button.next');
+        let currentSlide = 0;
 
-    function showSlide(index) {
-        slides.forEach((slide, i) => {
-            slide.removeAttribute('data-active');
-            if (i === index) {
-                slide.setAttribute('data-active', 'true');
-            }
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.removeAttribute('data-active');
+                if (i === index) {
+                    slide.setAttribute('data-active', 'true');
+                }
+            });
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentSlide = (currentSlide === 0) ? slides.length - 1 : currentSlide - 1;
+            showSlide(currentSlide);
         });
-    }
 
-    prevButton.addEventListener('click', () => {
-        currentSlide = (currentSlide === 0) ? slides.length - 1 : currentSlide - 1;
+        nextButton.addEventListener('click', () => {
+            currentSlide = (currentSlide === slides.length - 1) ? 0 : currentSlide + 1;
+            showSlide(currentSlide);
+        });
+
         showSlide(currentSlide);
-    });
-
-    nextButton.addEventListener('click', () => {
-        currentSlide = (currentSlide === slides.length - 1) ? 0 : currentSlide + 1;
-        showSlide(currentSlide);
-    });
-
-    showSlide(currentSlide);
     </script>
 </body>
 

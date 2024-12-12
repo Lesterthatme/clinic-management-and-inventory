@@ -28,7 +28,6 @@ function validator($conn, $student_id = null, $email = null, $accountType = null
         $query0->execute();
         $result = $query0->get_result();
 
-
         if ($result->num_rows == 0) {
             return true;
         } else {
@@ -109,16 +108,13 @@ if (isset($_POST['register_user'])) {
                                 
                 ';
                 $mail->send();
-
                 if ($conn === false) {
                     die("Database connection failed: " . mysqli_connect_error());
                 }
-
                 $stmt = $conn->prepare($query);
                 if ($stmt === false) {
                     die('MySQL prepare error: ' . $conn->error);
                 }
-
                 if ($userData['userType'] == 'student') {
                     $accTypeID = "1";
                     $stmt->bind_param(
@@ -142,7 +138,7 @@ if (isset($_POST['register_user'])) {
                     $accTypeID = "2";
                     $stmt->bind_param(
                         "ssssssssssss",
-                        $userData['userFName'], 
+                        $userData['userFName'],
                         $userData['userMName'],
                         $userData['userLName'],
                         $accTypeID,
@@ -199,26 +195,24 @@ if (isset($_POST['register_user'])) {
         }
     }
 
-
-
     if ($userData['userType'] == 'student') {
         $validationResult = validator($conn, $userData['userStudentID'], $userData['userEmail'], "1");
-    
-            $query = "INSERT INTO users (userStudentID, userFName, userMName, userLName, userType, userEmail, userPassword, userBirthday, userInstitute, userSubject, userBarangay, userTown, userCity, userProvince)
+
+        $query = "INSERT INTO users (userStudentID, userFName, userMName, userLName, userType, userEmail, userPassword, userBirthday, userInstitute, userSubject, userBarangay, userTown, userCity, userProvince)
                       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            registerUser($query, $userData, $conn);
+        registerUser($query, $userData, $conn);
     } elseif ($userData['userType'] == 'faculty') {
         $validationResult = validator($conn, null, $userData['userEmail'], "2");
-      
-            $query = "INSERT INTO users (userFName, userMName, userLName, userType, userEmail, userPassword, userBirthday, userInstitute, userBarangay, userTown, userCity, userProvince)
+
+        $query = "INSERT INTO users (userFName, userMName, userLName, userType, userEmail, userPassword, userBirthday, userInstitute, userBarangay, userTown, userCity, userProvince)
                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            registerUser($query, $userData, $conn);
+        registerUser($query, $userData, $conn);
     } elseif ($userData['userType'] == 'staff') {
         $validationResult = validator($conn, null, $userData['userEmail'], "3");
-      
-            $query = "INSERT INTO users (userFName, userMName, userLName, userType, userEmail, userPassword, userBirthday, userWorkPosition, userBarangay, userTown, userCity, userProvince)
+
+        $query = "INSERT INTO users (userFName, userMName, userLName, userType, userEmail, userPassword, userBirthday, userWorkPosition, userBarangay, userTown, userCity, userProvince)
                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            registerUser($query, $userData, $conn);
+        registerUser($query, $userData, $conn);
     } else {
         echo "<script>alert('Invalid user type.')
                         window.location.href = '../pages/user/register.php'
