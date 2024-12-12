@@ -73,8 +73,9 @@
                         echo "<td>" . $row["userEmail"] . "</td>";
                         echo "<td>" . $row["userWorkPosition"] . "</td>";
                         echo "<td>********</td>";
+
                         echo "<td>
-                            <button class='btn btn-warning btn-sm' data-bs-toggle='modal' data-bs-target='#editAdminModal' data-id='" . $row['userID'] . "'>Edit</button>
+                            <button class='btn btn-warning btn-sm'><a href='./edit-admin.php'>Edit</a></button>
                             <form action='functions/delete_admin.php' method='POST' style='display:inline-block;'>
                                 <input type='hidden' name='adminID' value='" . $row["userID"] . "'>
                                 <button type='submit' class='btn btn-danger btn-sm' disabled>Delete</button>

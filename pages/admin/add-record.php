@@ -66,8 +66,8 @@
             <div class="form-header">Student Health Form</div>
             <form action="./../../functions/patientAction.php" method="post">
                 <div class="form-group">
-                    <label for="patient">Student ID</label>
-                    <input type="text" class="form-control" id="patient" name="patient" required>
+                    <label for="studentId">Patient Email</label>
+                    <input type="text" class="form-control" id="studentId" name="studentId" required>
                 </div>
                 <div class="form-group">
                     <label for="illnessType">Illness Type</label>
