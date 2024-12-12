@@ -264,33 +264,33 @@ if (isset($_POST['register_user'])) {
             $_SESSION['userEmail'] = $userEmail;
             if ($row['userType'] == "1") {
                 $_SESSION['accTypeID'] = "1";
-                header("Location: ../pages/admin/view-records.php");
+                header("Location: /pages/admin/view-records.php");
                 exit();
             } else if ($row['userType'] == "2") {
                 $_SESSION['accTypeID'] = "2";
-                header("Location: ../pages/user/userDashboard.php");
+                header("Location: /pages/user/userDashboard.php");
                 exit();
             } else if ($row['userType'] == "3") {
                 $_SESSION['accTypeID'] = "3";
-                header("Location: ../pages/user/userDashboard.php");
+                header("Location: /pages/user/userDashboard.php");
                 exit();
             } else if ($row['userType'] == "4") {
                 $_SESSION['accTypeID'] = "4";
-                header("Location: ../pages/admin/dashboard.php");
+                header("Location: /pages/admin/dashboard.php");
                 exit();
             } else if ($row['userType'] == "5") {
                 $_SESSION['accTypeID'] = "5";
-                header("Location: ../pages/admin/dashboard.php");
+                header("Location: /pages/admin/dashboard.php");
                 exit();
             }
         } else {
             $_SESSION['error'] = "Incorrect password, dine pumapasok si ate ko.";
-            header("Location: ../pages/user/logIn.php");
+            header("Location: /pages/user/logIn.php");
             exit();
         }
     } else {
         $_SESSION['error'] = "Incorrect Email or Account Number";
-        header("Location: ../pages/user/logIn.php");
+        header("Location: /pages/user/logIn.php");
         exit();
     }
 } else if (isset($_POST['add-admin-btn'])) {
@@ -366,17 +366,17 @@ if (isset($_POST['register_user'])) {
             if ($stmt->execute()) {
                 $conn->commit();
                 echo "<script>alert('Successfully added')
-                    window.location.href = '../pages/admin/admin.php'
+                    window.location.href = '/pages/admin/admin.php'
             </script>";
             } else {
                 echo "<script>alert('Error.')
-                    window.location.href = '../pages/admin/admin.php'
+                    window.location.href = '/pages/admin/admin.php'
             </script>";
             }
         } catch (Exception $e) {
             $conn->rollback();
             echo "<script>alert('Transaction failed.')
-                        window.location.href = '../pages/admin/admin.php'
+                        window.location.href = '/pages/admin/admin.php'
                 </script>";
         } finally {
             $conn->close();
@@ -395,7 +395,7 @@ if (isset($_POST['register_user'])) {
         registerUser($query, $userData, $conn);
     } else {
         echo "<script>alert('Invalid user type.')
-                        window.location.href = '../pages/admin/admin.php'
+                        window.location.href = '/pages/admin/admin.php'
                 </script>";
     }
 }

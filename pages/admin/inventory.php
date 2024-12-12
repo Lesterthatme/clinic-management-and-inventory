@@ -78,50 +78,52 @@
 
         <aside>
             <h3>Generate Report</h3>
-            <form>
-                <label for="medicine-name">Medicine Name:</label>
-                <input type="text" id="medicine-name">
-                <label for="start-date">Start Date:</label>
-                <input type="date" id="start-date">
-                <label for="end-date">End Date:</label>
-                <input type="date" id="end-date">
-                <button type="button">Generate</button>
+            <form method="POST" action="/functions/inventoryFunctions.php">
+                <label for="supplyName">Medicine Name:</label>
+                <input name="supplyName" type="text" id="supplyName">
+                <label for="stock">Stock/s:</label>
+                <input name="stock" type="number" id="stock">
+                <label for="startDate">Start Date:</label>
+                <input name="startDate" type="date" id="startDate">
+                <label for="expDate">Expiration Date:</label>
+                <input name="expDate" type="date" id="expDate">
+                <button type="submit" name="add_supply">Generate</button>
             </form>
         </aside>
     </main>
 
     <script>
-        function toggleDropdown() {
-            const dropdown = document.getElementById("filter-dropdown");
-            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
-        }
+    function toggleDropdown() {
+        const dropdown = document.getElementById("filter-dropdown");
+        dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+    }
 
-        document.getElementById("fullscreen-btn").addEventListener("click", function() {
-            const table = document.getElementById("inventory-table");
-            if (!document.fullscreenElement) {
-                table.requestFullscreen();
-            } else {
-                document.exitFullscreen();
-            }
-        });
-
-        function sortTable(columnIndex) {
-            const table = document.getElementById("inventory-table");
-            const rows = Array.from(table.rows).slice(1);
-            rows.sort((a, b) => a.cells[columnIndex].innerText - b.cells[columnIndex].innerText);
-            rows.forEach(row => table.appendChild(row));
+    document.getElementById("fullscreen-btn").addEventListener("click", function() {
+        const table = document.getElementById("inventory-table");
+        if (!document.fullscreenElement) {
+            table.requestFullscreen();
+        } else {
+            document.exitFullscreen();
         }
+    });
 
-        function sortStatus(status) {
-            const table = document.getElementById("inventory-table");
-            const rows = Array.from(table.rows).slice(1);
-            rows.sort((a, b) => a.cells[6].innerText === status ? -1 : 1);
-            rows.forEach(row => table.appendChild(row));
-        }
+    function sortTable(columnIndex) {
+        const table = document.getElementById("inventory-table");
+        const rows = Array.from(table.rows).slice(1);
+        rows.sort((a, b) => a.cells[columnIndex].innerText - b.cells[columnIndex].innerText);
+        rows.forEach(row => table.appendChild(row));
+    }
 
-        function sortRecentlyAdded() {
-            console.log("Recently added sorting not implemented yet.");
-        }
+    function sortStatus(status) {
+        const table = document.getElementById("inventory-table");
+        const rows = Array.from(table.rows).slice(1);
+        rows.sort((a, b) => a.cells[6].innerText === status ? -1 : 1);
+        rows.forEach(row => table.appendChild(row));
+    }
+
+    function sortRecentlyAdded() {
+        console.log("Recently added sorting not implemented yet.");
+    }
     </script>
 
 </body>
