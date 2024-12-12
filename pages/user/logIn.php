@@ -1,13 +1,13 @@
 <?php
 session_start();
 
-if($_SESSION['userEmail']) {
+if(isset($_SESSION['userEmail'])) {
     if($_SESSION['accTypeID'] == "1") {
-        header("Location: /pages/admin/view-records.php");
+        header("Location: /pages/user/schedule.php");
     } else if($_SESSION['accTypeID'] == "2") {
-        header("Location: /pages/user/userDashboard.php");
+        header("Location: /pages/user/schedule.php");
     } else if($_SESSION['accTypeID'] == "3") {
-        header("Location: /pages/user/userDashboard.php");
+        header("Location: /pages/user/schedule.php");
     }else if ($_SESSION['accTypeID'] == "4") {
         header("Location: /pages/admin/dashboard.php");
     } else if ($_SESSION['accTypeID'] == "5") {
