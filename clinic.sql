@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Dec 12, 2024 at 03:30 PM
+-- Generation Time: Dec 12, 2024 at 03:56 PM
 -- Server version: 11.7.1-MariaDB
 -- PHP Version: 8.2.4
 
@@ -24,17 +24,18 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `audittrail`
+-- Table structure for table `audittrails`
 --
 
-CREATE TABLE `audittrail` (
-  `audID` int(11) NOT NULL,
-  `audUserID` int(11) NOT NULL,
-  `audIllnessType` int(11) DEFAULT NULL,
-  `audDescription` varchar(255) NOT NULL,
-  `audDate` datetime NOT NULL,
-  `audSupplyID` int(11) DEFAULT NULL,
-  `auditType` int(11) NOT NULL
+CREATE TABLE `audittrails` (
+  `patientID` int(11) NOT NULL,
+  `patientUserID` int(11) NOT NULL,
+  `patientEmail` varchar(100) NOT NULL,
+  `patientIllnessType` int(11) NOT NULL,
+  `patientDescription` varchar(255) NOT NULL,
+  `patientDate` datetime NOT NULL,
+  `patientSupplyID` int(11) NOT NULL,
+  `patientType` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -191,12 +192,11 @@ INSERT INTO `validation` (`valID`, `valNum`, `valEmail`, `valType`) VALUES
 --
 
 --
--- Indexes for table `audittrail`
+-- Indexes for table `audittrails`
 --
-ALTER TABLE `audittrail`
-  ADD PRIMARY KEY (`audID`),
-  ADD KEY `auditTypeFk` (`auditType`),
-  ADD KEY `userIDFk` (`audUserID`);
+ALTER TABLE `audittrails`
+  ADD PRIMARY KEY (`patientID`),
+  ADD KEY `patientType` (`patientType`);
 
 --
 -- Indexes for table `audittype`
@@ -241,10 +241,10 @@ ALTER TABLE `validation`
 --
 
 --
--- AUTO_INCREMENT for table `audittrail`
+-- AUTO_INCREMENT for table `audittrails`
 --
-ALTER TABLE `audittrail`
-  MODIFY `audID` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `audittrails`
+  MODIFY `patientID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `audittype`
@@ -287,11 +287,10 @@ ALTER TABLE `validation`
 --
 
 --
--- Constraints for table `audittrail`
+-- Constraints for table `audittrails`
 --
-ALTER TABLE `audittrail`
-  ADD CONSTRAINT `auditTypeFk` FOREIGN KEY (`auditType`) REFERENCES `audittype` (`audTypeID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `userIDFk` FOREIGN KEY (`audUserID`) REFERENCES `users` (`userID`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `audittrails`
+  ADD CONSTRAINT `patientType` FOREIGN KEY (`patientType`) REFERENCES `audittype` (`audTypeID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `users`
