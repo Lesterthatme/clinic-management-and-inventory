@@ -1,11 +1,12 @@
 <?php
+define("hostname","localhost");
+define("username","root");
+define("password", "");
+define("db_name", "clinic");
 
-$db_server = "localhost";
-$db_username = "root";
-$db_password = "";
-$db_database = "clinic";
+$conn = mysqli_connect(hostname, username, password, db_name);
 
-$conn = new mysqli($db_server, $db_username, "", $db_database, 3307);
-if ($conn->connect_error) {
-    die("connection failed" . $conn->connect_error);
+if(!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
+?>

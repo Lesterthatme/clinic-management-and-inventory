@@ -142,7 +142,7 @@ if (isset($_POST['register_user'])) {
                     $accTypeID = "2";
                     $stmt->bind_param(
                         "ssssssssssss",
-                        $userData['userFName'],
+                        $userData['userFName'], 
                         $userData['userMName'],
                         $userData['userLName'],
                         $accTypeID,
@@ -203,37 +203,22 @@ if (isset($_POST['register_user'])) {
 
     if ($userData['userType'] == 'student') {
         $validationResult = validator($conn, $userData['userStudentID'], $userData['userEmail'], "1");
-        if ($validationResult) {
-            echo "<script>alert('Unable to register, no existing record in registrar.')
-                    window.location.href = '../pages/user/register.php'
-            </script>";
-        } else {
+    
             $query = "INSERT INTO users (userStudentID, userFName, userMName, userLName, userType, userEmail, userPassword, userBirthday, userInstitute, userSubject, userBarangay, userTown, userCity, userProvince)
                       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             registerUser($query, $userData, $conn);
-        }
     } elseif ($userData['userType'] == 'faculty') {
         $validationResult = validator($conn, null, $userData['userEmail'], "2");
-        if ($validationResult) {
-            echo "<script>alert('Unable to register, no existing record in registrar.')
-                    window.location.href = '../pages/user/register.php'
-            </script>";
-        } else {
+      
             $query = "INSERT INTO users (userFName, userMName, userLName, userType, userEmail, userPassword, userBirthday, userInstitute, userBarangay, userTown, userCity, userProvince)
                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             registerUser($query, $userData, $conn);
-        }
     } elseif ($userData['userType'] == 'staff') {
         $validationResult = validator($conn, null, $userData['userEmail'], "3");
-        if ($validationResult) {
-            echo "<script>alert('Unable to register, no existing record in registrar.')
-                    window.location.href = '../pages/user/register.php'
-            </script>";
-        } else {
+      
             $query = "INSERT INTO users (userFName, userMName, userLName, userType, userEmail, userPassword, userBirthday, userWorkPosition, userBarangay, userTown, userCity, userProvince)
                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             registerUser($query, $userData, $conn);
-        }
     } else {
         echo "<script>alert('Invalid user type.')
                         window.location.href = '../pages/user/register.php'
@@ -279,7 +264,7 @@ if (isset($_POST['register_user'])) {
             $_SESSION['userEmail'] = $userEmail;
             if ($row['userType'] == "1") {
                 $_SESSION['accTypeID'] = "1";
-                header("Location: ../pages/user/userDashboard.php");
+                header("Location: ../pages/admin/view-records.php");
                 exit();
             } else if ($row['userType'] == "2") {
                 $_SESSION['accTypeID'] = "2";
@@ -300,8 +285,8 @@ if (isset($_POST['register_user'])) {
             }
         } else {
             $_SESSION['error'] = "Incorrect password, dine pumapasok si ate ko.";
-            // header("Location: ../pages/user/logIn.php");
-            // exit();
+            header("Location: ../pages/user/logIn.php");
+            exit();
         }
     } else {
         $_SESSION['error'] = "Incorrect Email or Account Number";
