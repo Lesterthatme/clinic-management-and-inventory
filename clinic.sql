@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: Dec 12, 2024 at 08:55 AM
+-- Generation Time: Dec 12, 2024 at 03:30 PM
 -- Server version: 11.7.1-MariaDB
 -- PHP Version: 8.2.4
 
@@ -56,6 +56,28 @@ INSERT INTO `audittype` (`audTypeID`, `audTypeDescription`) VALUES
 (1, 'authentication'),
 (2, 'dispense'),
 (3, 'patient');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `illnesstypes`
+--
+
+CREATE TABLE `illnesstypes` (
+  `illID` int(11) NOT NULL,
+  `illDescription` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `illnesstypes`
+--
+
+INSERT INTO `illnesstypes` (`illID`, `illDescription`) VALUES
+(1, 'Respiratory Illnesses'),
+(2, 'Gastrointestinal Illnesses'),
+(3, 'Skin Conditions'),
+(4, 'Allergic Reactions'),
+(5, 'Other Illnesses');
 
 -- --------------------------------------------------------
 
@@ -183,6 +205,12 @@ ALTER TABLE `audittype`
   ADD PRIMARY KEY (`audTypeID`);
 
 --
+-- Indexes for table `illnesstypes`
+--
+ALTER TABLE `illnesstypes`
+  ADD PRIMARY KEY (`illID`);
+
+--
 -- Indexes for table `inventory`
 --
 ALTER TABLE `inventory`
@@ -223,6 +251,12 @@ ALTER TABLE `audittrail`
 --
 ALTER TABLE `audittype`
   MODIFY `audTypeID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `illnesstypes`
+--
+ALTER TABLE `illnesstypes`
+  MODIFY `illID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `inventory`
