@@ -66,7 +66,7 @@
             <div class="form-header">Student Health Form</div>
             <form action="#" method="post">
                 <div class="form-group">
-                    <label for="studentId">Student ID</label>
+                    <label for="studentId">Patient Email</label>
                     <input type="text" class="form-control" id="studentId" name="studentId" required>
                 </div>
                 <div class="form-group">
