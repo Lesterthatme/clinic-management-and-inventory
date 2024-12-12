@@ -1,11 +1,9 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Arial", sans-serif;
+  font-family: 'Arial', sans-serif;
   background-color: #eaf8e4;
 }
-
-
 
 /* Main Layout */
 main {
@@ -125,7 +123,7 @@ th {
 }
 
 /* Report Form */
-aside {
+.aside {
   width: 40%;
   background-color: #f1f8e9;
   border: 2px solid #2e7d32;
@@ -139,28 +137,28 @@ aside {
   margin: 0 auto;
 }
 
-aside h3 {
+.aside h3 {
   color: #2e7d32;
   font-size: 28px;
   margin-bottom: 20px;
   text-align: center;
 }
 
-aside form {
+.aside form {
   display: flex;
   flex-direction: column;
   gap: 20px;
   width: 100%;
 }
 
-aside form label {
+.aside form label {
   font-weight: bold;
   font-size: 16px;
   text-align: left;
   margin-left: 10px;
 }
 
-aside form input {
+.aside form input {
   padding: 12px;
   border: 1px solid #2e7d32;
   border-radius: 8px;
@@ -169,7 +167,7 @@ aside form input {
   box-sizing: border-box;
 }
 
-aside form button {
+.aside form button {
   background-color: #2e7d32;
   border: none;
   color: white;
