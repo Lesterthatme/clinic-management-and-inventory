@@ -64,35 +64,38 @@
     <div class="add">
         <div class="container">
             <div class="form-header">Student Health Form</div>
-            <form action="./../../functions/patientAction.php" method="post">
+            <form action="/functions/recordsFunctions.php" method="post">
                 <div class="form-group">
-                    <label for="studentId">Patient Email</label>
-                    <input type="text" class="form-control" id="studentId" name="studentId" required>
+                    <label for="patientEmail">Patient Email</label>
+                    <input type="text" class="form-control" id="patientEmail" name="patientEmail" required>
                 </div>
                 <div class="form-group">
-                    <label for="illnessType">Illness Type</label>
-                    <select name="" id="" class="form-select">
-                        <option value="">nakadepende sa db </option>
+                    <label for="patientType">Patient Type</label>
+                    <select name="patientType" id="patientType" class="form-select">
+                        <option value="1">nakadepende sa db </option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="illness">Illness</label>
-                    <input type="text" class="form-control" id="illness" name="illness" required>
-                </div>
-                <div class="form-group">
-                    <label for="treatment">Findings</label>
-                    <input type="text" class="form-control" id="treatment" name="treatment" required>
-                </div>
-                <div class="form-group">
-                    <label for="illnessDate">Illness Date</label>
-                    <input type="date" class="form-control" id="illnessDate" name="illnessDate">
-                </div>
-                <div class="form-group">
-                    <label for="illnessDate" class="">Medicine</label>
-                    <select name="" id="" class="form-select">
-                        <option value="">kung ano ma ququiry sa gamot</option>
+                    <label for="patientIllnessType">Illness Type</label>
+                    <select name="patientIllnessType" id="patientIllnessType" class="form-select">
+                        <option value="1">nakadepende sa db </option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label for="patientDescription">Findings</label>
+                    <input type="text" class="form-control" id="patientDescription" name="patientDescription" required>
+                </div>
+                <div class="form-group">
+                    <label for="patientDate">Illness Date</label>
+                    <input type="date" class="form-control" id="patientDate" name="patientDate">
+                </div>
+                <div class="form-group">
+                    <label for="patientSupplyID" class="">Medicine</label>
+                    <select name="patientSupplyID" id="patientSupplyID" class="form-select">
+                        <option value="1">kung ano ma ququiry sa gamot</option>
+                    </select>
+                </div>
+
                 <button type="submit" name="add_record" class="btn btn-primary">Submit</button>
             </form>
         </div>
