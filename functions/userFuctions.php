@@ -28,6 +28,7 @@ function validator($conn, $student_id = null, $email = null, $accountType = null
         $query0->execute();
         $result = $query0->get_result();
 
+
         if ($result->num_rows == 0) {
             return true;
         } else {
@@ -81,139 +82,178 @@ if (isset($_POST['register_user'])) {
     function registerUser($query, $userData, $conn)
     {
         $conn->begin_transaction();
-
+    
         $password = generateRandomPassword();
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
+    
         try {
-            $mail = new PHPMailer(true);
-            try {
-                $mail->isSMTP();
-                $mail->Host = 'smtp.gmail.com';
-                $mail->SMTPAuth = true;
-                $mail->Username = 'lesterarjaymerino.basc@gmail.com';
-                $mail->Password = 'ncwn gsfj ormr vxgv';
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-                $mail->Port = 587;
-                $mail->setFrom('lesterarjaymerino.basc@gmail.com', 'BASC CLINIC');
-                $mail->addAddress($userData['userEmail'], $userData['userLName']);
-                $mail->isHTML(true);
-                $mail->Subject = 'GoodDay BASCians!!!';
-                $mail->Body    = '<
-                                <p>Your Email is: <b style="font-size: 25px;">' . $userData['userEmail'] . '</b></p>
-                                <br>
-                                <p>Your password is: <b style="font-size: 25px;">' . $password . '</b></p>
-                                <br>
-                                <p>Your account number is: <b style="font-size: 25px;">' . $userData['userStudentID'] . '</b></p>
-                                
-                ';
-                $mail->send();
-                if ($conn === false) {
-                    die("Database connection failed: " . mysqli_connect_error());
+            if ($userData['userType'] != '4' || $userData['userType'] != '5') {
+                $mail = new PHPMailer(true);
+                try {
+                    $mail->isSMTP();
+                    $mail->Host = 'smtp.gmail.com';
+                    $mail->SMTPAuth = true;
+                    $mail->Username = 'lesterarjaymerino.basc@gmail.com';
+                    $mail->Password = 'ncwn gsfj ormr vxgv';
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                    $mail->Port = 587;
+                    $mail->setFrom('lesterarjaymerino.basc@gmail.com', 'BASC CLINIC');
+                    $mail->addAddress($userData['userEmail'], $userData['userLName']);
+                    $mail->isHTML(true);
+                    $mail->Subject = 'GoodDay BASCians!!!';
+                    $mail->Body    = '<p>Your Email is: <b style="font-size: 25px;">' . $userData['userEmail'] . '</b></p>
+                                      <br>
+                                      <p>Your password is: <b style="font-size: 25px;">' . $password . '</b></p>
+                                      <br>
+                                      <p>Your account number is: <b style="font-size: 25px;">' . $userData['userStudentID'] . '</b></p>';
+    
+                    $mail->send();
+                } catch (Exception $e) {
+                    echo "<script>alert('Message could not be sent. Mailer Error.'); window.location.href = '/pages/user/register.php';</script>";
+                    return; 
                 }
-                $stmt = $conn->prepare($query);
-                if ($stmt === false) {
-                    die('MySQL prepare error: ' . $conn->error);
-                }
-                if ($userData['userType'] == 'student') {
-                    $accTypeID = "1";
-                    $stmt->bind_param(
-                        "ssssssssssssss",
-                        $userData['userStudentID'],
-                        $userData['userFName'],
-                        $userData['userMName'],
-                        $userData['userLName'],
-                        $accTypeID,
-                        $userData['userEmail'],
-                        $hashed_password,
-                        $userData['userBirthday'],
-                        $userData['userInstitute'],
-                        $userData['userSubject'],
-                        $userData['userBarangay'],
-                        $userData['userTown'],
-                        $userData['userCity'],
-                        $userData['userProvince']
-                    );
-                } elseif ($userData['userType'] == 'faculty') {
-                    $accTypeID = "2";
-                    $stmt->bind_param(
-                        "ssssssssssss",
-                        $userData['userFName'],
-                        $userData['userMName'],
-                        $userData['userLName'],
-                        $accTypeID,
-                        $userData['userEmail'],
-                        $hashed_password,
-                        $userData['userBirthday'],
-                        $userData['userInstitute'],
-                        $userData['userBarangay'],
-                        $userData['userTown'],
-                        $userData['userCity'],
-                        $userData['userProvince']
-                    );
-                } elseif ($userData['userType'] == 'staff') {
-                    $accTypeID = "3";
-                    $stmt->bind_param(
-                        "ssssssssssss",
-                        $userData['userFName'],
-                        $userData['userMName'],
-                        $userData['userLName'],
-                        $accTypeID,
-                        $userData['userEmail'],
-                        $hashed_password,
-                        $userData['userBirthday'],
-                        $userData['userWorkPosition'],
-                        $userData['userBarangay'],
-                        $userData['userTown'],
-                        $userData['userCity'],
-                        $userData['userProvince']
-                    );
-                }
-
-                if ($stmt->execute()) {
-                    $conn->commit();
-                    echo "<script>alert('Successfully added')
-                        window.location.href = '../pages/user/register.php'
-                </script>";
-                } else {
-                    echo "<script>alert('Error.')
-                        window.location.href = '../pages/user/register.php'
-                </script>";
-                }
-            } catch (Exception $e) {
-                echo "<script>alert('Message could not be sent. Mailer Error.')
-                        window.location.href = '../pages/user/register.php'
-                </script>";
             }
+    
+            if ($conn === false) {
+                die("Database connection failed: " . mysqli_connect_error());
+            }
+    
+            $stmt = $conn->prepare($query);
+            if ($stmt === false) {
+                die('MySQL prepare error: ' . $conn->error);
+            }
+    
+            if ($userData['userType'] == 'student') {
+                $accTypeID = "1";
+                $stmt->bind_param(
+                    "ssssssssssssss",
+                    $userData['userStudentID'],
+                    $userData['userFName'],
+                    $userData['userMName'],
+                    $userData['userLName'],
+                    $accTypeID,
+                    $userData['userEmail'],
+                    $hashed_password,
+                    $userData['userBirthday'],
+                    $userData['userInstitute'],
+                    $userData['userSubject'],
+                    $userData['userBarangay'],
+                    $userData['userTown'],
+                    $userData['userCity'],
+                    $userData['userProvince']
+                );
+            } elseif ($userData['userType'] == 'faculty') {
+                $accTypeID = "2";
+                $stmt->bind_param(
+                    "ssssssssssss",
+                    $userData['userFName'], 
+                    $userData['userMName'],
+                    $userData['userLName'],
+                    $accTypeID,
+                    $userData['userEmail'],
+                    $hashed_password,
+                    $userData['userBirthday'],
+                    $userData['userInstitute'],
+                    $userData['userBarangay'],
+                    $userData['userTown'],
+                    $userData['userCity'],
+                    $userData['userProvince']
+                );
+            } elseif ($userData['userType'] == 'staff') {
+                $accTypeID = "3";
+                $stmt->bind_param(
+                    "ssssssssssss",
+                    $userData['userFName'],
+                    $userData['userMName'],
+                    $userData['userLName'],
+                    $accTypeID,
+                    $userData['userEmail'],
+                    $hashed_password,
+                    $userData['userBirthday'],
+                    $userData['userWorkPosition'],
+                    $userData['userBarangay'],
+                    $userData['userTown'],
+                    $userData['userCity'],
+                    $userData['userProvince']
+                );
+            } elseif ($userData['userType'] == 'doctor') {
+                $accTypeID = "4";
+                $stmt->bind_param(
+                    "ssssssssssss",
+                    $userData['userFName'],
+                    $userData['userMName'],
+                    $userData['userLName'],
+                    $accTypeID,
+                    $userData['userEmail'],
+                    $hashed_password,
+                    $userData['userBirthday'],
+                    $userData['userWorkPosition'],
+                    $userData['userBarangay'],
+                    $userData['userTown'],
+                    $userData['userCity'],
+                    $userData['userProvince']
+                );
+            }  elseif ($userData['userType'] == 'nurse') {
+                $accTypeID = "5";
+                $stmt->bind_param(
+                    "ssssssssssss",
+                    $userData['userFName'],
+                    $userData['userMName'],
+                    $userData['userLName'],
+                    $accTypeID,
+                    $userData['userEmail'],
+                    $hashed_password,
+                    $userData['userBirthday'],
+                    $userData['userWorkPosition'],
+                    $userData['userBarangay'],
+                    $userData['userTown'],
+                    $userData['userCity'],
+                    $userData['userProvince']
+                );
+            }
+    
+            if ($stmt->execute()) {
+                $conn->commit();
+                echo "<script>alert('Successfully added'); window.location.href = '../pages/user/register.php';</script>";
+            } else {
+                echo "<script>alert('Error.'); window.location.href = '../pages/user/register.php';</script>";
+            }
+    
         } catch (Exception $e) {
             $conn->rollback();
-            echo "<script>alert('Transaction failed.')
-                        window.location.href = '../pages/user/register.php'
-                </script>";
+            echo "<script>alert('Transaction failed.'); window.location.href = '../pages/user/register.php';</script>";
         } finally {
             $conn->close();
         }
     }
-
+    
     if ($userData['userType'] == 'student') {
         $validationResult = validator($conn, $userData['userStudentID'], $userData['userEmail'], "1");
-
-        $query = "INSERT INTO users (userStudentID, userFName, userMName, userLName, userType, userEmail, userPassword, userBirthday, userInstitute, userSubject, userBarangay, userTown, userCity, userProvince)
+    
+            $query = "INSERT INTO users (userStudentID, userFName, userMName, userLName, userType, userEmail, userPassword, userBirthday, userInstitute, userSubject, userBarangay, userTown, userCity, userProvince)
                       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        registerUser($query, $userData, $conn);
+            registerUser($query, $userData, $conn);
     } elseif ($userData['userType'] == 'faculty') {
         $validationResult = validator($conn, null, $userData['userEmail'], "2");
-
-        $query = "INSERT INTO users (userFName, userMName, userLName, userType, userEmail, userPassword, userBirthday, userInstitute, userBarangay, userTown, userCity, userProvince)
+      
+            $query = "INSERT INTO users (userFName, userMName, userLName, userType, userEmail, userPassword, userBirthday, userInstitute, userBarangay, userTown, userCity, userProvince)
                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        registerUser($query, $userData, $conn);
+            registerUser($query, $userData, $conn);
     } elseif ($userData['userType'] == 'staff') {
         $validationResult = validator($conn, null, $userData['userEmail'], "3");
-
-        $query = "INSERT INTO users (userFName, userMName, userLName, userType, userEmail, userPassword, userBirthday, userWorkPosition, userBarangay, userTown, userCity, userProvince)
+      
+            $query = "INSERT INTO users (userFName, userMName, userLName, userType, userEmail, userPassword, userBirthday, userWorkPosition, userBarangay, userTown, userCity, userProvince)
                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        registerUser($query, $userData, $conn);
-    } else {
+            registerUser($query, $userData, $conn);
+    } elseif ($userData['userType'] == 'doctor') {
+            $query = "INSERT INTO users (userFName, userMName, userLName, userType, userEmail, userPassword, userBirthday, userWorkPosition, userBarangay, userTown, userCity, userProvince)
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            registerUser($query, $userData, $conn);
+    } elseif ($userData['userType'] == 'nurse') {
+        $query = "INSERT INTO users (userFName, userMName, userLName, userType, userEmail, userPassword, userBirthday, userWorkPosition, userBarangay, userTown, userCity, userProvince)
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        registerUser($query, $userData, $conn); 
+    }  else {
         echo "<script>alert('Invalid user type.')
                         window.location.href = '../pages/user/register.php'
                 </script>";
@@ -392,4 +432,54 @@ if (isset($_POST['register_user'])) {
                         window.location.href = '/pages/admin/admin.php'
                 </script>";
     }
-}
+} else if(isset($_POST['update_user'])) {
+    $userData = [
+        'userID' => mysqli_real_escape_string($conn, $_POST['userID']),
+        'userFName' => mysqli_real_escape_string($conn, $_POST['userFName']),
+        'userMName' => mysqli_real_escape_string($conn, $_POST['userMName']),
+        'userLName' => mysqli_real_escape_string($conn, $_POST['userLName']),
+        'userInstitute' => mysqli_real_escape_string($conn, $_POST['userInstitute']),
+    ];
+
+    $requiredFields = ['userFName', 'userLName', 'userMName', 'userInstitute'];
+
+    $missingFields = [];
+    foreach ($requiredFields as $field) {
+        if (empty($userData[$field])) {
+            $missingFields[] = $field;
+        }
+    }
+
+    if (!empty($missingFields)) {
+        echo "Please fill in all required fields: " . implode(', ', $missingFields);
+        exit();
+    }
+
+    $query = "UPDATE users SET userFName = ?, userMName = ?, userLName = ?, userInstitute = ? WHERE userID = ?";
+    $stmt = $conn->prepare($query);
+
+    if ($stmt === false) {
+        die('MySQL prepare error: ' . $conn->error);
+    }
+
+    $stmt->bind_param(
+        "ssssi",
+        $userData['userFName'],
+        $userData['userMName'],
+        $userData['userLName'],
+        $userData['userInstitute'],
+        $userData['userID'] 
+    );
+
+    if ($stmt->execute()) {
+        echo "<script>alert('User updated successfully.');
+            window.location.href = '/pages/admin/records.php';
+        </script>";
+    } else {
+        echo "<script>alert('Error updating user. Please try again.');
+            window.location.href = '/pages/admin/records.php';
+        </script>";
+    }
+
+    $stmt->close();
+} 

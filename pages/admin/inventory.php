@@ -1,3 +1,10 @@
+<?php require '../../config/dbcon.php';
+if (!isset($_SESSION['userEmail'])) {
+    header('Location: /index.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +39,7 @@
                 </div>
             </div>
 
-            <table id="inventory-table">
+            <table id="inventory-table" style="height: 10rem; overflow: hidden;">
                 <thead>
                     <tr>
                         <th>No.</th>
@@ -40,43 +47,41 @@
                         <th>Date of Purchased</th>
                         <th>Stock</th>
                         <th>Expiration</th>
-                        <th>Dispense</th>
                         <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Biogesic</td>
-                        <td>12/23/2023</td>
-                        <td>103</td>
-                        <td>12/23/2024</td>
-                        <td>23</td>
-                        <td class="expired">Expired</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Neozep</td>
-                        <td>12/23/2023</td>
-                        <td>52</td>
-                        <td>12/23/2025</td>
-                        <td>60</td>
-                        <td class="in-stock">In Stock</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Alaxan Fr</td>
-                        <td>12/23/2023</td>
-                        <td>52</td>
-                        <td>12/23/2025</td>
-                        <td>0</td>
-                        <td class="out-of-stock">Out of Stock</td>
-                    </tr>
+                    <?php
+                    $inventoryQuery = "SELECT * FROM inventory";
+                    $inventoryResult = mysqli_query($conn, $inventoryQuery);
+
+                    while ($row = mysqli_fetch_assoc($inventoryResult)) {
+                        $status = '';
+                        if ($row['stock'] <= 0) {
+                            $status = "<td class='out-of-stock'>Out of Stock</td>";
+                        } elseif (strtotime($row['expDate']) < time()) {
+                            $status = "<td class='expired'>Expired</td>";
+                        } else {
+                            $status = "<td class='in-stock'>In Stock</td>";
+                        }
+
+                        $html = "<tr>";
+                        $html .= "<td>{$row['supplyID']}</td>";
+                        $html .= "<td>{$row['supplyName']}</td>";
+                        $html .= "<td>{$row['startDate']}</td>";
+                        $html .= "<td>{$row['stock']}</td>";
+                        $html .= "<td>{$row['expDate']}</td>";
+                        $html .= $status;
+                        $html .= "</tr>";
+
+                        echo $html;
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>
 
-        <aside>
+        <div class="aside">
             <h3>Generate Report</h3>
             <form method="POST" action="/functions/inventoryFunctions.php">
                 <label for="supplyName">Medicine Name:</label>
@@ -89,7 +94,7 @@
                 <input name="expDate" type="date" id="expDate">
                 <button type="submit" name="add_supply">Generate</button>
             </form>
-        </aside>
+        </div>
     </main>
 
     <script>
@@ -110,14 +115,18 @@
     function sortTable(columnIndex) {
         const table = document.getElementById("inventory-table");
         const rows = Array.from(table.rows).slice(1);
-        rows.sort((a, b) => a.cells[columnIndex].innerText - b.cells[columnIndex].innerText);
+        rows.sort((a, b) => {
+            return parseInt(a.cells[columnIndex].innerText) - parseInt(b.cells[columnIndex].innerText);
+        });
         rows.forEach(row => table.appendChild(row));
     }
 
     function sortStatus(status) {
         const table = document.getElementById("inventory-table");
         const rows = Array.from(table.rows).slice(1);
-        rows.sort((a, b) => a.cells[6].innerText === status ? -1 : 1);
+        rows.sort((a, b) => {
+            return a.cells[5].innerText === status ? -1 : 1;
+        });
         rows.forEach(row => table.appendChild(row));
     }
 
