@@ -1,4 +1,10 @@
-<?php require '../../config/dbcon.php' ?>
+<?php 
+require '../../config/dbcon.php';
+if(!isset($_SESSION['userEmail'])){
+    header('Location: /index.php');
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
