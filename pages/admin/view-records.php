@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require '../../config/dbcon.php';
 if (!isset($_SESSION['userEmail'])) {
     header('Location: /index.php');
@@ -53,44 +55,44 @@ $medicalResult = $medicalStmt->get_result();
     <title>Patient Record</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {
-            background-color: #f6fff8;
-        }
+    body {
+        background-color: #f6fff8;
+    }
 
-        .record-container {
-            margin: 30px auto;
-            padding: 20px;
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
+    .record-container {
+        margin: 30px auto;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
 
-        .header {
-            background-color: #97ce89;
-            color: white;
-            padding: 15px;
-            border-radius: 10px 10px 0 0;
-        }
+    .header {
+        background-color: #97ce89;
+        color: white;
+        padding: 15px;
+        border-radius: 10px 10px 0 0;
+    }
 
-        .table-container {
-            background-color: #ffffff;
-            margin-top: 20px;
-            border: 2px solid #4caf50;
-            border-radius: 10px;
-        }
+    .table-container {
+        background-color: #ffffff;
+        margin-top: 20px;
+        border: 2px solid #4caf50;
+        border-radius: 10px;
+    }
 
-        .table th {
-            background-color: #97ce89;
-            text-align: center;
-        }
+    .table th {
+        background-color: #97ce89;
+        text-align: center;
+    }
 
-        .table td {
-            text-align: center;
-        }
+    .table td {
+        text-align: center;
+    }
 
-        .back-button {
-            margin-top: 15px;
-        }
+    .back-button {
+        margin-top: 15px;
+    }
     </style>
 </head>
 
@@ -130,11 +132,11 @@ $medicalResult = $medicalStmt->get_result();
                     </thead>
                     <tbody id="recordBody">
                         <?php while ($row = $medicalResult->fetch_assoc()): ?>
-                            <tr>
-                                <td><?php echo $formattedDate = date("F j, Y", strtotime($row['patientDate']));; ?></td>
-                                <td><?php echo $row['illDescription']; ?></td>
-                                <td><?php echo $row['patientDescription']; ?></td>
-                            </tr>
+                        <tr>
+                            <td><?php echo $formattedDate = date("F j, Y", strtotime($row['patientDate']));; ?></td>
+                            <td><?php echo $row['illDescription']; ?></td>
+                            <td><?php echo $row['patientDescription']; ?></td>
+                        </tr>
                         <?php endwhile; ?>
                     </tbody>
                 </table>

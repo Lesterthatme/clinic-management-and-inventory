@@ -1,4 +1,7 @@
-<?php require '../../config/dbcon.php';
+<?php 
+session_start();
+
+require '../../config/dbcon.php';
 if (!isset($_SESSION['userEmail'])) {
     header('Location: /index.php');
 }
