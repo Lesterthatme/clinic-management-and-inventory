@@ -1,8 +1,8 @@
 <?php
 require '../../config/dbcon.php';
-if (!isset($_SESSION['userEmail'])) {
-    header('Location: /index.php');
-}
+// if (!isset($_SESSION['userEmail'])) {
+//     header('Location: /index.php');
+// }
 
 
 $patientID = isset($_GET['id']) ? intval($_GET['id']) : 0;

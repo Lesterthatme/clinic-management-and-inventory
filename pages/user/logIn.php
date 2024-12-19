@@ -8,9 +8,9 @@ if (isset($_SESSION['userEmail'])) {
     } else if ($_SESSION['accTypeID'] == "3") {
         header("Location: /pages/user/userDashboard.php");
     } else if ($_SESSION['accTypeID'] == "4") {
-        header("Location: /pages/admin/dashboard.php");
+        echo "<script>window.href.location = '/clinic-management-and-inventory/pages/admin/dashboard.php'</script>";
     } else if ($_SESSION['accTypeID'] == "5") {
-        header("Location: /pages/admin/dashboard.php");
+        echo "<script>window.href.location = '/clinic-management-and-inventory/pages/admin/dashboard.php'</script>";
     }
     exit();
 }
