@@ -1,7 +1,10 @@
-<?php require '../../config/dbcon.php';
-// if (!isset($_SESSION['userEmail'])) {
-//     header('Location: /index.php');
-// }
+<?php 
+session_start();
+
+require '../../config/dbcon.php';
+if (!isset($_SESSION['userEmail'])) {
+    header('Location: /index.php');
+}
 
 ?>
 
@@ -16,9 +19,9 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 
     <style>
-        .container-content {
-            padding: 2rem 10rem;
-        }
+    .container-content {
+        padding: 2rem 10rem;
+    }
     </style>
 </head>
 
@@ -83,7 +86,8 @@
                             </div>
                             <div class="mb-3">
                                 <label for="userPassword" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="userPassword" name="userPassword" required>
+                                <input type="password" class="form-control" id="userPassword" name="userPassword"
+                                    required>
                             </div>
                         </div>
                     </div>

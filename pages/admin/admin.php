@@ -1,7 +1,10 @@
-<?php require '../../config/dbcon.php';
-// if (!isset($_SESSION['userEmail'])) {
-//     header('Location: /index.php');
-// }
+<?php 
+
+session_start();
+require '../../config/dbcon.php';
+if (!isset($_SESSION['userEmail'])) {
+    header('Location: /index.php');
+}
 
 ?>
 
@@ -16,32 +19,32 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
 
     <style>
-        table {
-            background-color: white;
-        }
+    table {
+        background-color: white;
+    }
 
-        table thead {
-            text-align: center;
-            background-color: #97ce89;
-            color: white;
-        }
+    table thead {
+        text-align: center;
+        background-color: #97ce89;
+        color: white;
+    }
 
-        table tbody tr:hover {
-            background-color: #c8e6c9;
-        }
+    table tbody tr:hover {
+        background-color: #c8e6c9;
+    }
 
-        table tbody td {
-            text-align: center;
-        }
+    table tbody td {
+        text-align: center;
+    }
 
-        .table-bordered {
-            border: 2px solid #4caf50;
-        }
+    .table-bordered {
+        border: 2px solid #4caf50;
+    }
 
-        .container h1 {
-            color: #2e7d32;
-            font-weight: bold;
-        }
+    .container h1 {
+        color: #2e7d32;
+        font-weight: bold;
+    }
     </style>
 </head>
 
@@ -166,9 +169,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $('#adminTable').DataTable();
-        });
+    $(document).ready(function() {
+        $('#adminTable').DataTable();
+    });
     </script>
 </body>
 

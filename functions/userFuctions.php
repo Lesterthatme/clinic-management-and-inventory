@@ -297,15 +297,15 @@ if (isset($_POST['register_user'])) {
             $_SESSION['userEmail'] = $userEmail;
             if ($row['userType'] == "1") {
                 $_SESSION['accTypeID'] = "1";
-                header("Location: /pages/admin/view-records.php");
+                header("Location: /pages/user/schedule.php");
                 exit();
             } else if ($row['userType'] == "2") {
                 $_SESSION['accTypeID'] = "2";
-                header("Location: /pages/user/userDashboard.php");
+                header("Location: /pages/user/schedule.php");
                 exit();
             } else if ($row['userType'] == "3") {
                 $_SESSION['accTypeID'] = "3";
-                header("Location: /pages/user/userDashboard.php");
+                header("Location: /pages/user/schedule.php");
                 exit();
             } else if ($row['userType'] == "4") {
                 $_SESSION['accTypeID'] = "4";
